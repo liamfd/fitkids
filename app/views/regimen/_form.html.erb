@@ -1,0 +1,21 @@
+<%= form_for(@regiman) do |f| %>
+  <% if @regiman.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@regiman.errors.count, "error") %> prohibited this regiman from being saved:</h2>
+
+      <ul>
+      <% @regiman.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :exercise %><br />
+    <%= f.text_field :exercise %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

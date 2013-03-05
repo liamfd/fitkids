@@ -1,0 +1,27 @@
+<h1>Listing monitor_child_relations</h1>
+
+<table>
+  <tr>
+    <th>Relation</th>
+    <th>Child</th>
+    <th>Monitor</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @monitor_child_relations.each do |monitor_child_relation| %>
+  <tr>
+    <td><%= monitor_child_relation.relation %></td>
+    <td><%= monitor_child_relation.child %></td>
+    <td><%= monitor_child_relation.monitor %></td>
+    <td><%= link_to 'Show', monitor_child_relation %></td>
+    <td><%= link_to 'Edit', edit_monitor_child_relation_path(monitor_child_relation) %></td>
+    <td><%= link_to 'Destroy', monitor_child_relation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Monitor child relation', new_monitor_child_relation_path %>

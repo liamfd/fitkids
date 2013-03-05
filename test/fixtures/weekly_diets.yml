@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  carb_goal: 
+  veggie_goal: 
+  fruit_goal: 
+  protein_goal: 
+  dairy_goal: 
+  water_goal: 
+  sweets_goal: 
+  carbs_eaten: 
+  veggie_eaten: 
+  fruit_eaten: 
+  protein_eaten: 
+  dairy_eaten: 
+  water_eaten: 
+  sweets_eaten: 
+
+two:
+  carb_goal: 
+  veggie_goal: 
+  fruit_goal: 
+  protein_goal: 
+  dairy_goal: 
+  water_goal: 
+  sweets_goal: 
+  carbs_eaten: 
+  veggie_eaten: 
+  fruit_eaten: 
+  protein_eaten: 
+  dairy_eaten: 
+  water_eaten: 
+  sweets_eaten: 

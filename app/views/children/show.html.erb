@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @child.name %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%= @child.height %>
+</p>
+
+<p>
+  <b>Weight:</b>
+  <%= @child.weight %>
+</p>
+
+<p>
+  <b>Age:</b>
+  <%= @child.age %>
+</p>
+
+<p>
+  <b>Exp:</b>
+  <%= @child.exp %>
+</p>
+
+<p>
+  <b>Avatar:</b>
+  <%= @child.avatar %>
+</p>
+
+<p>
+  <b>Weekly diet:</b>
+  <%= @child.weekly_diet %>
+</p>
+
+<p>
+  <b>Regimen:</b>
+  <%= @child.regimen %>
+</p>
+
+
+<%= link_to 'Edit', edit_child_path(@child) %> |
+<%= link_to 'Back', children_path %>

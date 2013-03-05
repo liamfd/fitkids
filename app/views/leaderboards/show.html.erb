@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Board type:</b>
+  <%= @leaderboard.board_type %>
+</p>
+
+<p>
+  <b>Child:</b>
+  <%= @leaderboard.child %>
+</p>
+
+
+<%= link_to 'Edit', edit_leaderboard_path(@leaderboard) %> |
+<%= link_to 'Back', leaderboards_path %>

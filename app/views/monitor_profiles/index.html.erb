@@ -1,0 +1,29 @@
+<h1>Listing monitor_profiles</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Picture</th>
+    <th>Tag</th>
+    <th>Article</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @monitor_profiles.each do |monitor_profile| %>
+  <tr>
+    <td><%= monitor_profile.name %></td>
+    <td><%= monitor_profile.picture %></td>
+    <td><%= monitor_profile.tag %></td>
+    <td><%= monitor_profile.article %></td>
+    <td><%= link_to 'Show', monitor_profile %></td>
+    <td><%= link_to 'Edit', edit_monitor_profile_path(monitor_profile) %></td>
+    <td><%= link_to 'Destroy', monitor_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Monitor profile', new_monitor_profile_path %>

@@ -1,0 +1,11 @@
+rails generate scaffold articlecontent:text, tag:reference, title:string
+rails generate scaffold avatar color:string, features:reference, image:binary, name:string, story:text
+rails generate scaffold child age:int, avatar:reference, exp:int, height:int, name:string, regimen:reference, weekly_diet:reference, weight:int
+rails generate scaffold exercise exercise_type:string, reps:int
+rails generate scaffold feature color:string, feature_type:string, image:binary
+rails generate scaffold board_type:string, child:reference
+rails generate scaffold monitorChildRelationship child:reference, monitor_profile:reference, relation:string
+rails generate scaffold monitor_profile article:reference, name:string, picture:binary, tag:reference
+rais generate scaffold regiman exercise:reference
+rails generate scaffold tag tag_name:string
+rails generate scaffold weekly_diet carb_goal:int, carbs_eaten:int, dairy_eaten:int, dairy_goal:int, fruit_eaten:int, fruit_goal:int, protein_eaten:int, protein_goal:int, sweets_eaten:int, sweets_goal:int, veggie_eaten:int, veggie_goal:int, water_eaten:int, water_goal:int

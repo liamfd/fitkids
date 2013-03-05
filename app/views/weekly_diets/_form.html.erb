@@ -1,0 +1,73 @@
+<%= form_for(@weekly_diet) do |f| %>
+  <% if @weekly_diet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@weekly_diet.errors.count, "error") %> prohibited this weekly_diet from being saved:</h2>
+
+      <ul>
+      <% @weekly_diet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :carb_goal %><br />
+    <%= f.text_field :carb_goal %>
+  </div>
+  <div class="field">
+    <%= f.label :veggie_goal %><br />
+    <%= f.text_field :veggie_goal %>
+  </div>
+  <div class="field">
+    <%= f.label :fruit_goal %><br />
+    <%= f.text_field :fruit_goal %>
+  </div>
+  <div class="field">
+    <%= f.label :protein_goal %><br />
+    <%= f.text_field :protein_goal %>
+  </div>
+  <div class="field">
+    <%= f.label :dairy_goal %><br />
+    <%= f.text_field :dairy_goal %>
+  </div>
+  <div class="field">
+    <%= f.label :water_goal %><br />
+    <%= f.text_field :water_goal %>
+  </div>
+  <div class="field">
+    <%= f.label :sweets_goal %><br />
+    <%= f.text_field :sweets_goal %>
+  </div>
+  <div class="field">
+    <%= f.label :carbs_eaten %><br />
+    <%= f.text_field :carbs_eaten %>
+  </div>
+  <div class="field">
+    <%= f.label :veggie_eaten %><br />
+    <%= f.text_field :veggie_eaten %>
+  </div>
+  <div class="field">
+    <%= f.label :fruit_eaten %><br />
+    <%= f.text_field :fruit_eaten %>
+  </div>
+  <div class="field">
+    <%= f.label :protein_eaten %><br />
+    <%= f.text_field :protein_eaten %>
+  </div>
+  <div class="field">
+    <%= f.label :dairy_eaten %><br />
+    <%= f.text_field :dairy_eaten %>
+  </div>
+  <div class="field">
+    <%= f.label :water_eaten %><br />
+    <%= f.text_field :water_eaten %>
+  </div>
+  <div class="field">
+    <%= f.label :sweets_eaten %><br />
+    <%= f.text_field :sweets_eaten %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

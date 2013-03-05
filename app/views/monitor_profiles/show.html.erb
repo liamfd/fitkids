@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @monitor_profile.name %>
+</p>
+
+<p>
+  <b>Picture:</b>
+  <%= @monitor_profile.picture %>
+</p>
+
+<p>
+  <b>Tag:</b>
+  <%= @monitor_profile.tag %>
+</p>
+
+<p>
+  <b>Article:</b>
+  <%= @monitor_profile.article %>
+</p>
+
+
+<%= link_to 'Edit', edit_monitor_profile_path(@monitor_profile) %> |
+<%= link_to 'Back', monitor_profiles_path %>

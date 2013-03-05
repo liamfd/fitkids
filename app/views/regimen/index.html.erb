@@ -1,0 +1,23 @@
+<h1>Listing regimen</h1>
+
+<table>
+  <tr>
+    <th>Exercise</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @regimen.each do |regiman| %>
+  <tr>
+    <td><%= regiman.exercise %></td>
+    <td><%= link_to 'Show', regiman %></td>
+    <td><%= link_to 'Edit', edit_regiman_path(regiman) %></td>
+    <td><%= link_to 'Destroy', regiman, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Regiman', new_regiman_path %>
