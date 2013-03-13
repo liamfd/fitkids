@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Place:</b>
+  <%= @leaderboard_spot.place %>
+</p>
+
+<p>
+  <b>Leaderboard:</b>
+  <%= @leaderboard_spot.leaderboard %>
+</p>
+
+<p>
+  <b>Child:</b>
+  <%= @leaderboard_spot.child %>
+</p>
+
+
+<%= link_to 'Edit', edit_leaderboard_spot_path(@leaderboard_spot) %> |
+<%= link_to 'Back', leaderboard_spots_path %>

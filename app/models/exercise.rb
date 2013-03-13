@@ -1,4 +1,3 @@
 class Exercise < ActiveRecord::Base
-  attr_accessible :exercise_type, :reps
-  #many to many with regimen
+  attr_accessible :body_part, :description, :difficulty, :reps
 end

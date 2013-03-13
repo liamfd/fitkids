@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  name: MyString
+  appearance: MyString
+  level: 
   feature_type: MyString
-  color: MyString
-  image: 
 
 two:
+  name: MyString
+  appearance: MyString
+  level: 
   feature_type: MyString
-  color: MyString
-  image: 

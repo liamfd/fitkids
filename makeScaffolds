@@ -1,11 +1,13 @@
-rails generate scaffold articlecontent:text, tag:reference, title:string
-rails generate scaffold avatar color:string, features:reference, image:binary, name:string, story:text
-rails generate scaffold child age:int, avatar:reference, exp:int, height:int, name:string, regimen:reference, weekly_diet:reference, weight:int
-rails generate scaffold exercise exercise_type:string, reps:int
-rails generate scaffold feature color:string, feature_type:string, image:binary
-rails generate scaffold board_type:string, child:reference
-rails generate scaffold monitorChildRelationship child:reference, monitor_profile:reference, relation:string
-rails generate scaffold monitor_profile article:reference, name:string, picture:binary, tag:reference
-rais generate scaffold regiman exercise:reference
-rails generate scaffold tag tag_name:string
-rails generate scaffold weekly_diet carb_goal:int, carbs_eaten:int, dairy_eaten:int, dairy_goal:int, fruit_eaten:int, fruit_goal:int, protein_eaten:int, protein_goal:int, sweets_eaten:int, sweets_goal:int, veggie_eaten:int, veggie_goal:int, water_eaten:int, water_goal:int
+rails generate scaffold child name:string, level:int, points:int, date_of_birth:date, height:float, weight:float, sex:string, diet_score:int, exercise_score:int, diet_plan:reference
+rails generate scaffold monitor_child_relationship relation:String, bonus:float, child:reference, monitor:reference
+rails generate scaffold monitor_profile name:string, bio:text
+rails generate scaffold leaderboard board_type:string, age_group:int, exercise:reference
+rails generate scaffold daily_diet personal_score:int, veggie_eaten: int, prot_eaten:int, carbs_eaten:int, fruit_eaten:int, water_drank:int, sweets_eaten:int, child:reference, diet_plan:reference
+rails generate scaffold diet_plan veggie_serv:int, prot_serv:int, carbs_serv:int, fruit_serv:int, water_serv:int, sweets_serv:int
+rails generate scaffold exercise body_part:string, difficulty:int, description:text, reps:int
+rails generate scaffold daily_regimen focus:string, child:reference
+rails generate scaffold avatar color:int name:string, description:text, child:reference
+rails generate scaffold feature name:string appearance:string level:int feature_type:string
+rails generate scaffold article name:string, topic:string, content:text
+rails generate scaffold leaderboard_spot place:int, leaderboard:reference, child:reference
+rails generate scaffold exercise_reps reps:int, exercise:reference, daily_regimen:reference

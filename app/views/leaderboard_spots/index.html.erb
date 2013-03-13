@@ -1,0 +1,27 @@
+<h1>Listing leaderboard_spots</h1>
+
+<table>
+  <tr>
+    <th>Place</th>
+    <th>Leaderboard</th>
+    <th>Child</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @leaderboard_spots.each do |leaderboard_spot| %>
+  <tr>
+    <td><%= leaderboard_spot.place %></td>
+    <td><%= leaderboard_spot.leaderboard %></td>
+    <td><%= leaderboard_spot.child %></td>
+    <td><%= link_to 'Show', leaderboard_spot %></td>
+    <td><%= link_to 'Edit', edit_leaderboard_spot_path(leaderboard_spot) %></td>
+    <td><%= link_to 'Destroy', leaderboard_spot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Leaderboard spot', new_leaderboard_spot_path %>

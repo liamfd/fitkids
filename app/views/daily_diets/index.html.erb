@@ -1,0 +1,41 @@
+<h1>Listing daily_diets</h1>
+
+<table>
+  <tr>
+    <th>Personal score</th>
+    <th>Veggie eaten</th>
+    <th>Int,</th>
+    <th>Prot eaten</th>
+    <th>Carbs eaten</th>
+    <th>Fruit eaten</th>
+    <th>Water drank</th>
+    <th>Sweets eaten</th>
+    <th>Child</th>
+    <th>Diet plan</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @daily_diets.each do |daily_diet| %>
+  <tr>
+    <td><%= daily_diet.personal_score %></td>
+    <td><%= daily_diet.veggie_eaten %></td>
+    <td><%= daily_diet.int, %></td>
+    <td><%= daily_diet.prot_eaten %></td>
+    <td><%= daily_diet.carbs_eaten %></td>
+    <td><%= daily_diet.fruit_eaten %></td>
+    <td><%= daily_diet.water_drank %></td>
+    <td><%= daily_diet.sweets_eaten %></td>
+    <td><%= daily_diet.child %></td>
+    <td><%= daily_diet.diet_plan %></td>
+    <td><%= link_to 'Show', daily_diet %></td>
+    <td><%= link_to 'Edit', edit_daily_diet_path(daily_diet) %></td>
+    <td><%= link_to 'Destroy', daily_diet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Daily diet', new_daily_diet_path %>

@@ -2,11 +2,10 @@
 
 <table>
   <tr>
-    <th>Name</th>
     <th>Color</th>
-    <th>Story</th>
-    <th>Image</th>
-    <th>Features</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Child</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,11 +13,10 @@
 
 <% @avatars.each do |avatar| %>
   <tr>
-    <td><%= avatar.name %></td>
     <td><%= avatar.color %></td>
-    <td><%= avatar.story %></td>
-    <td><%= avatar.image %></td>
-    <td><%= avatar.features %></td>
+    <td><%= avatar.name %></td>
+    <td><%= avatar.description %></td>
+    <td><%= avatar.child %></td>
     <td><%= link_to 'Show', avatar %></td>
     <td><%= link_to 'Edit', edit_avatar_path(avatar) %></td>
     <td><%= link_to 'Destroy', avatar, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -12,16 +12,20 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :appearance %><br />
+    <%= f.text_field :appearance %>
+  </div>
+  <div class="field">
+    <%= f.label :level %><br />
+    <%= f.text_field :level %>
+  </div>
+  <div class="field">
     <%= f.label :feature_type %><br />
     <%= f.text_field :feature_type %>
-  </div>
-  <div class="field">
-    <%= f.label :color %><br />
-    <%= f.text_field :color %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br />
-    <%= f.text_field :image %>
   </div>
   <div class="actions">
     <%= f.submit %>

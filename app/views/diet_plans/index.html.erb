@@ -1,0 +1,33 @@
+<h1>Listing diet_plans</h1>
+
+<table>
+  <tr>
+    <th>Veggie serv</th>
+    <th>Prot serv</th>
+    <th>Carbs serv</th>
+    <th>Fruit serv</th>
+    <th>Water serv</th>
+    <th>Sweets serv</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @diet_plans.each do |diet_plan| %>
+  <tr>
+    <td><%= diet_plan.veggie_serv %></td>
+    <td><%= diet_plan.prot_serv %></td>
+    <td><%= diet_plan.carbs_serv %></td>
+    <td><%= diet_plan.fruit_serv %></td>
+    <td><%= diet_plan.water_serv %></td>
+    <td><%= diet_plan.sweets_serv %></td>
+    <td><%= link_to 'Show', diet_plan %></td>
+    <td><%= link_to 'Edit', edit_diet_plan_path(diet_plan) %></td>
+    <td><%= link_to 'Destroy', diet_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Diet plan', new_diet_plan_path %>

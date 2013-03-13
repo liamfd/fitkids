@@ -1,13 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  picture: 
-  tag: 
-  article: 
+  name: 
+  bio: MyText
 
 two:
-  name: MyString
-  picture: 
-  tag: 
-  article: 
+  name: 
+  bio: MyText

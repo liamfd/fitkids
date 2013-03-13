@@ -18,7 +18,7 @@ class MonitorProfilesControllerTest < ActionController::TestCase
 
   test "should create monitor_profile" do
     assert_difference('MonitorProfile.count') do
-      post :create, monitor_profile: { article: @monitor_profile.article, name: @monitor_profile.name, picture: @monitor_profile.picture, tag: @monitor_profile.tag }
+      post :create, monitor_profile: { bio: @monitor_profile.bio, name: @monitor_profile.name }
     end
 
     assert_redirected_to monitor_profile_path(assigns(:monitor_profile))
@@ -35,7 +35,7 @@ class MonitorProfilesControllerTest < ActionController::TestCase
   end
 
   test "should update monitor_profile" do
-    put :update, id: @monitor_profile, monitor_profile: { article: @monitor_profile.article, name: @monitor_profile.name, picture: @monitor_profile.picture, tag: @monitor_profile.tag }
+    put :update, id: @monitor_profile, monitor_profile: { bio: @monitor_profile.bio, name: @monitor_profile.name }
     assert_redirected_to monitor_profile_path(assigns(:monitor_profile))
   end
 

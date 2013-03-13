@@ -1,21 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
+  name: 
+  level: 
+  points: 
+  date_of_birth: 
   height: 
   weight: 
-  age: 
-  exp: 
-  avatar: 
-  weekly_diet: 
-  regimen: 
+  sex: 
+  diet_score: 
+  exercise_score: 
+  diet_plan: 
 
 two:
-  name: MyString
+  name: 
+  level: 
+  points: 
+  date_of_birth: 
   height: 
   weight: 
-  age: 
-  exp: 
-  avatar: 
-  weekly_diet: 
-  regimen: 
+  sex: 
+  diet_score: 
+  exercise_score: 
+  diet_plan: 

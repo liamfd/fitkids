@@ -1,0 +1,25 @@
+<%= form_for(@daily_regiman) do |f| %>
+  <% if @daily_regiman.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@daily_regiman.errors.count, "error") %> prohibited this daily_regiman from being saved:</h2>
+
+      <ul>
+      <% @daily_regiman.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :focus %><br />
+    <%= f.text_field :focus %>
+  </div>
+  <div class="field">
+    <%= f.label :child %><br />
+    <%= f.text_field :child %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

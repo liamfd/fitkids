@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Personal score:</b>
+  <%= @daily_diet.personal_score %>
+</p>
+
+<p>
+  <b>Veggie eaten:</b>
+  <%= @daily_diet.veggie_eaten %>
+</p>
+
+<p>
+  <b>Int,:</b>
+  <%= @daily_diet.int, %>
+</p>
+
+<p>
+  <b>Prot eaten:</b>
+  <%= @daily_diet.prot_eaten %>
+</p>
+
+<p>
+  <b>Carbs eaten:</b>
+  <%= @daily_diet.carbs_eaten %>
+</p>
+
+<p>
+  <b>Fruit eaten:</b>
+  <%= @daily_diet.fruit_eaten %>
+</p>
+
+<p>
+  <b>Water drank:</b>
+  <%= @daily_diet.water_drank %>
+</p>
+
+<p>
+  <b>Sweets eaten:</b>
+  <%= @daily_diet.sweets_eaten %>
+</p>
+
+<p>
+  <b>Child:</b>
+  <%= @daily_diet.child %>
+</p>
+
+<p>
+  <b>Diet plan:</b>
+  <%= @daily_diet.diet_plan %>
+</p>
+
+
+<%= link_to 'Edit', edit_daily_diet_path(@daily_diet) %> |
+<%= link_to 'Back', daily_diets_path %>

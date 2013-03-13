@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Relation:</b>
+  <%= @monitor_child_relationship.relation %>
+</p>
+
+<p>
+  <b>Bonus:</b>
+  <%= @monitor_child_relationship.bonus %>
+</p>
+
+<p>
+  <b>Child:</b>
+  <%= @monitor_child_relationship.child %>
+</p>
+
+<p>
+  <b>Monitor:</b>
+  <%= @monitor_child_relationship.monitor %>
+</p>
+
+
+<%= link_to 'Edit', edit_monitor_child_relationship_path(@monitor_child_relationship) %> |
+<%= link_to 'Back', monitor_child_relationships_path %>

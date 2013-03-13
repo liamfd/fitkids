@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Focus:</b>
+  <%= @daily_regiman.focus %>
+</p>
+
+<p>
+  <b>Child:</b>
+  <%= @daily_regiman.child %>
+</p>
+
+
+<%= link_to 'Edit', edit_daily_regiman_path(@daily_regiman) %> |
+<%= link_to 'Back', daily_regimen_path %>

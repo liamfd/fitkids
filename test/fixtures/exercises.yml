@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  exercise_type: 
+  body_part: 
+  difficulty: 
+  description: 
   reps: 
 
 two:
-  exercise_type: 
+  body_part: 
+  difficulty: 
+  description: 
   reps: 

@@ -1,8 +1,8 @@
 Fitkids::Application.routes.draw do
-  resources :monitor_profiles
+  resources :exercise_reps
 
 
-  resources :leaderboards
+  resources :leaderboard_spots
 
 
   resources :articles
@@ -14,22 +14,31 @@ Fitkids::Application.routes.draw do
   resources :avatars
 
 
+  resources :daily_regimen
+
+
   resources :exercises
 
 
-  resources :regimen
+  resources :diet_plans
 
 
-  resources :monitor_child_relations
+  resources :daily_diets
+
+
+  resources :monitor_profiles
+
+
+  resources :monitor_child_relationships
 
 
   resources :children
 
 
-  resources :tags
+  resources :leaderboards
 
 
-  resources :weekly_diets
+  resources :monitor_child_relations
 
 
   # The priority is based upon order of creation:

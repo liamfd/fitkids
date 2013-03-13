@@ -1,0 +1,57 @@
+<%= form_for(@daily_diet) do |f| %>
+  <% if @daily_diet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@daily_diet.errors.count, "error") %> prohibited this daily_diet from being saved:</h2>
+
+      <ul>
+      <% @daily_diet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :personal_score %><br />
+    <%= f.text_field :personal_score %>
+  </div>
+  <div class="field">
+    <%= f.label :veggie_eaten %><br />
+    <%= f.text_field :veggie_eaten %>
+  </div>
+  <div class="field">
+    <%= f.label :int, %><br />
+    <%= f.text_field :int, %>
+  </div>
+  <div class="field">
+    <%= f.label :prot_eaten %><br />
+    <%= f.text_field :prot_eaten %>
+  </div>
+  <div class="field">
+    <%= f.label :carbs_eaten %><br />
+    <%= f.text_field :carbs_eaten %>
+  </div>
+  <div class="field">
+    <%= f.label :fruit_eaten %><br />
+    <%= f.text_field :fruit_eaten %>
+  </div>
+  <div class="field">
+    <%= f.label :water_drank %><br />
+    <%= f.text_field :water_drank %>
+  </div>
+  <div class="field">
+    <%= f.label :sweets_eaten %><br />
+    <%= f.text_field :sweets_eaten %>
+  </div>
+  <div class="field">
+    <%= f.label :child %><br />
+    <%= f.text_field :child %>
+  </div>
+  <div class="field">
+    <%= f.label :diet_plan %><br />
+    <%= f.text_field :diet_plan %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  relation: 
+  bonus: 
+  child: 
+  monitor: 
+
+two:
+  relation: 
+  bonus: 
+  child: 
+  monitor: 

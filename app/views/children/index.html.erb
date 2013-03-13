@@ -3,13 +3,15 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Level</th>
+    <th>Points</th>
+    <th>Date of birth</th>
     <th>Height</th>
     <th>Weight</th>
-    <th>Age</th>
-    <th>Exp</th>
-    <th>Avatar</th>
-    <th>Weekly diet</th>
-    <th>Regimen</th>
+    <th>Sex</th>
+    <th>Diet score</th>
+    <th>Exercise score</th>
+    <th>Diet plan</th>
     <th></th>
     <th></th>
     <th></th>
@@ -18,13 +20,15 @@
 <% @children.each do |child| %>
   <tr>
     <td><%= child.name %></td>
+    <td><%= child.level %></td>
+    <td><%= child.points %></td>
+    <td><%= child.date_of_birth %></td>
     <td><%= child.height %></td>
     <td><%= child.weight %></td>
-    <td><%= child.age %></td>
-    <td><%= child.exp %></td>
-    <td><%= child.avatar %></td>
-    <td><%= child.weekly_diet %></td>
-    <td><%= child.regimen %></td>
+    <td><%= child.sex %></td>
+    <td><%= child.diet_score %></td>
+    <td><%= child.exercise_score %></td>
+    <td><%= child.diet_plan %></td>
     <td><%= link_to 'Show', child %></td>
     <td><%= link_to 'Edit', edit_child_path(child) %></td>
     <td><%= link_to 'Destroy', child, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,4 +1,3 @@
 class Feature < ActiveRecord::Base
-  attr_accessible :color, :feature_type, :image
-	belongs_to :avatar , inverse_of :feature
+  attr_accessible :appearance, :feature_type, :level, :name
 end

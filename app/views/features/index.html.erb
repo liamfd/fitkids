@@ -2,9 +2,10 @@
 
 <table>
   <tr>
+    <th>Name</th>
+    <th>Appearance</th>
+    <th>Level</th>
     <th>Feature type</th>
-    <th>Color</th>
-    <th>Image</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,9 +13,10 @@
 
 <% @features.each do |feature| %>
   <tr>
+    <td><%= feature.name %></td>
+    <td><%= feature.appearance %></td>
+    <td><%= feature.level %></td>
     <td><%= feature.feature_type %></td>
-    <td><%= feature.color %></td>
-    <td><%= feature.image %></td>
     <td><%= link_to 'Show', feature %></td>
     <td><%= link_to 'Edit', edit_feature_path(feature) %></td>
     <td><%= link_to 'Destroy', feature, method: :delete, data: { confirm: 'Are you sure?' } %></td>
