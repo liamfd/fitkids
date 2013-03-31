@@ -18,7 +18,7 @@ class LeaderboardsControllerTest < ActionController::TestCase
 
   test "should create leaderboard" do
     assert_difference('Leaderboard.count') do
-      post :create, leaderboard: { board_type: @leaderboard.board_type, child: @leaderboard.child }
+      post :create, leaderboard: { age_group: @leaderboard.age_group, board_type: @leaderboard.board_type }
     end
 
     assert_redirected_to leaderboard_path(assigns(:leaderboard))
@@ -35,7 +35,7 @@ class LeaderboardsControllerTest < ActionController::TestCase
   end
 
   test "should update leaderboard" do
-    put :update, id: @leaderboard, leaderboard: { board_type: @leaderboard.board_type, child: @leaderboard.child }
+    put :update, id: @leaderboard, leaderboard: { age_group: @leaderboard.age_group, board_type: @leaderboard.board_type }
     assert_redirected_to leaderboard_path(assigns(:leaderboard))
   end
 

@@ -18,7 +18,7 @@ class AvatarsControllerTest < ActionController::TestCase
 
   test "should create avatar" do
     assert_difference('Avatar.count') do
-      post :create, avatar: { child: @avatar.child, color: @avatar.color, description: @avatar.description, name: @avatar.name }
+      post :create, avatar: { color: @avatar.color, description: @avatar.description, name: @avatar.name }
     end
 
     assert_redirected_to avatar_path(assigns(:avatar))
@@ -35,7 +35,7 @@ class AvatarsControllerTest < ActionController::TestCase
   end
 
   test "should update avatar" do
-    put :update, id: @avatar, avatar: { child: @avatar.child, color: @avatar.color, description: @avatar.description, name: @avatar.name }
+    put :update, id: @avatar, avatar: { color: @avatar.color, description: @avatar.description, name: @avatar.name }
     assert_redirected_to avatar_path(assigns(:avatar))
   end
 

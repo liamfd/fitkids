@@ -1,0 +1,27 @@
+<h1>Listing featurings</h1>
+
+<table>
+  <tr>
+    <th>Level</th>
+    <th>Avatar</th>
+    <th>Feature</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @featurings.each do |featuring| %>
+  <tr>
+    <td><%= featuring.level %></td>
+    <td><%= featuring.avatar %></td>
+    <td><%= featuring.feature %></td>
+    <td><%= link_to 'Show', featuring %></td>
+    <td><%= link_to 'Edit', edit_featuring_path(featuring) %></td>
+    <td><%= link_to 'Destroy', featuring, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Featuring', new_featuring_path %>

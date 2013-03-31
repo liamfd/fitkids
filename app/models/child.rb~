@@ -1,0 +1,4 @@
+class Child < ActiveRecord::Base
+  belongs_to :diet_plan
+  attr_accessible :date_of_birth, :diet_score, :exercise_score, :height, :level, :name, :points, :sex, :weight
+end

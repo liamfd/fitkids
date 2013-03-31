@@ -1,0 +1,4 @@
+class Leaderboard < ActiveRecord::Base
+  belongs_to :exercise
+  attr_accessible :age_group, :board_type
+end

@@ -3,7 +3,8 @@
 <table>
   <tr>
     <th>Board type</th>
-    <th>Child</th>
+    <th>Age group</th>
+    <th>Exercise</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,7 +13,8 @@
 <% @leaderboards.each do |leaderboard| %>
   <tr>
     <td><%= leaderboard.board_type %></td>
-    <td><%= leaderboard.child %></td>
+    <td><%= leaderboard.age_group %></td>
+    <td><%= leaderboard.exercise %></td>
     <td><%= link_to 'Show', leaderboard %></td>
     <td><%= link_to 'Edit', edit_leaderboard_path(leaderboard) %></td>
     <td><%= link_to 'Destroy', leaderboard, method: :delete, data: { confirm: 'Are you sure?' } %></td>

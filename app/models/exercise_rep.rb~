@@ -1,0 +1,5 @@
+class ExerciseRep < ActiveRecord::Base
+  belongs_to :exercise
+  belongs_to :daily_regimen
+  attr_accessible :reps
+end

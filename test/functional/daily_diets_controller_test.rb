@@ -18,7 +18,7 @@ class DailyDietsControllerTest < ActionController::TestCase
 
   test "should create daily_diet" do
     assert_difference('DailyDiet.count') do
-      post :create, daily_diet: { carbs_eaten: @daily_diet.carbs_eaten, child: @daily_diet.child, diet_plan: @daily_diet.diet_plan, fruit_eaten: @daily_diet.fruit_eaten, int,: @daily_diet.int,, personal_score: @daily_diet.personal_score, prot_eaten: @daily_diet.prot_eaten, sweets_eaten: @daily_diet.sweets_eaten, veggie_eaten: @daily_diet.veggie_eaten, water_drank: @daily_diet.water_drank }
+      post :create, daily_diet: { carbs_eaten: @daily_diet.carbs_eaten, fruit_eaten: @daily_diet.fruit_eaten, personal_score: @daily_diet.personal_score, prot_eaten: @daily_diet.prot_eaten, sweets_eaten: @daily_diet.sweets_eaten, veggie_eaten: @daily_diet.veggie_eaten, water_drank: @daily_diet.water_drank }
     end
 
     assert_redirected_to daily_diet_path(assigns(:daily_diet))
@@ -35,7 +35,7 @@ class DailyDietsControllerTest < ActionController::TestCase
   end
 
   test "should update daily_diet" do
-    put :update, id: @daily_diet, daily_diet: { carbs_eaten: @daily_diet.carbs_eaten, child: @daily_diet.child, diet_plan: @daily_diet.diet_plan, fruit_eaten: @daily_diet.fruit_eaten, int,: @daily_diet.int,, personal_score: @daily_diet.personal_score, prot_eaten: @daily_diet.prot_eaten, sweets_eaten: @daily_diet.sweets_eaten, veggie_eaten: @daily_diet.veggie_eaten, water_drank: @daily_diet.water_drank }
+    put :update, id: @daily_diet, daily_diet: { carbs_eaten: @daily_diet.carbs_eaten, fruit_eaten: @daily_diet.fruit_eaten, personal_score: @daily_diet.personal_score, prot_eaten: @daily_diet.prot_eaten, sweets_eaten: @daily_diet.sweets_eaten, veggie_eaten: @daily_diet.veggie_eaten, water_drank: @daily_diet.water_drank }
     assert_redirected_to daily_diet_path(assigns(:daily_diet))
   end
 

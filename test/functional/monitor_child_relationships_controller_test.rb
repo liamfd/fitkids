@@ -18,7 +18,7 @@ class MonitorChildRelationshipsControllerTest < ActionController::TestCase
 
   test "should create monitor_child_relationship" do
     assert_difference('MonitorChildRelationship.count') do
-      post :create, monitor_child_relationship: { bonus: @monitor_child_relationship.bonus, child: @monitor_child_relationship.child, monitor: @monitor_child_relationship.monitor, relation: @monitor_child_relationship.relation }
+      post :create, monitor_child_relationship: { bonus: @monitor_child_relationship.bonus, relation: @monitor_child_relationship.relation }
     end
 
     assert_redirected_to monitor_child_relationship_path(assigns(:monitor_child_relationship))
@@ -35,7 +35,7 @@ class MonitorChildRelationshipsControllerTest < ActionController::TestCase
   end
 
   test "should update monitor_child_relationship" do
-    put :update, id: @monitor_child_relationship, monitor_child_relationship: { bonus: @monitor_child_relationship.bonus, child: @monitor_child_relationship.child, monitor: @monitor_child_relationship.monitor, relation: @monitor_child_relationship.relation }
+    put :update, id: @monitor_child_relationship, monitor_child_relationship: { bonus: @monitor_child_relationship.bonus, relation: @monitor_child_relationship.relation }
     assert_redirected_to monitor_child_relationship_path(assigns(:monitor_child_relationship))
   end
 

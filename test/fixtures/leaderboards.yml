@@ -2,8 +2,10 @@
 
 one:
   board_type: MyString
-  child: 
+  age_group: 
+  exercise: 
 
 two:
   board_type: MyString
-  child: 
+  age_group: 
+  exercise: 

@@ -1,0 +1,4 @@
+class DailyRegimen < ActiveRecord::Base
+  belongs_to :child
+  attr_accessible :focus
+end

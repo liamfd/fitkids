@@ -18,7 +18,7 @@ class ChildrenControllerTest < ActionController::TestCase
 
   test "should create child" do
     assert_difference('Child.count') do
-      post :create, child: { date_of_birth: @child.date_of_birth, diet_plan: @child.diet_plan, diet_score: @child.diet_score, exercise_score: @child.exercise_score, height: @child.height, level: @child.level, name: @child.name, points: @child.points, sex: @child.sex, weight: @child.weight }
+      post :create, child: { date_of_birth: @child.date_of_birth, diet_score: @child.diet_score, exercise_score: @child.exercise_score, height: @child.height, level: @child.level, name: @child.name, points: @child.points, sex: @child.sex, weight: @child.weight }
     end
 
     assert_redirected_to child_path(assigns(:child))
@@ -35,7 +35,7 @@ class ChildrenControllerTest < ActionController::TestCase
   end
 
   test "should update child" do
-    put :update, id: @child, child: { date_of_birth: @child.date_of_birth, diet_plan: @child.diet_plan, diet_score: @child.diet_score, exercise_score: @child.exercise_score, height: @child.height, level: @child.level, name: @child.name, points: @child.points, sex: @child.sex, weight: @child.weight }
+    put :update, id: @child, child: { date_of_birth: @child.date_of_birth, diet_score: @child.diet_score, exercise_score: @child.exercise_score, height: @child.height, level: @child.level, name: @child.name, points: @child.points, sex: @child.sex, weight: @child.weight }
     assert_redirected_to child_path(assigns(:child))
   end
 

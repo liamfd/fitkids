@@ -2,12 +2,12 @@
 
 one:
   relation: 
-  bonus: 
+  bonus: 1.5
   child: 
   monitor: 
 
 two:
   relation: 
-  bonus: 
+  bonus: 1.5
   child: 
   monitor: 

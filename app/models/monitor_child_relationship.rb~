@@ -1,0 +1,5 @@
+class MonitorChildRelationship < ActiveRecord::Base
+  belongs_to :child
+  belongs_to :monitor
+  attr_accessible :bonus, :relation
+end

@@ -1,0 +1,5 @@
+class LeaderboardSpot < ActiveRecord::Base
+  belongs_to :leaderboard
+  belongs_to :child
+  attr_accessible :place
+end

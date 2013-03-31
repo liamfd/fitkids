@@ -1,0 +1,5 @@
+class DailyDiet < ActiveRecord::Base
+  belongs_to :child
+  belongs_to :diet_plan
+  attr_accessible :carbs_eaten, :fruit_eaten, :personal_score, :prot_eaten, :sweets_eaten, :veggie_eaten, :water_drank
+end

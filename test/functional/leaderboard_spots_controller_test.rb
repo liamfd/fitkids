@@ -18,7 +18,7 @@ class LeaderboardSpotsControllerTest < ActionController::TestCase
 
   test "should create leaderboard_spot" do
     assert_difference('LeaderboardSpot.count') do
-      post :create, leaderboard_spot: { child: @leaderboard_spot.child, leaderboard: @leaderboard_spot.leaderboard, place: @leaderboard_spot.place }
+      post :create, leaderboard_spot: { place: @leaderboard_spot.place }
     end
 
     assert_redirected_to leaderboard_spot_path(assigns(:leaderboard_spot))
@@ -35,7 +35,7 @@ class LeaderboardSpotsControllerTest < ActionController::TestCase
   end
 
   test "should update leaderboard_spot" do
-    put :update, id: @leaderboard_spot, leaderboard_spot: { child: @leaderboard_spot.child, leaderboard: @leaderboard_spot.leaderboard, place: @leaderboard_spot.place }
+    put :update, id: @leaderboard_spot, leaderboard_spot: { place: @leaderboard_spot.place }
     assert_redirected_to leaderboard_spot_path(assigns(:leaderboard_spot))
   end
 

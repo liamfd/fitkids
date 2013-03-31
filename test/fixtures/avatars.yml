@@ -2,12 +2,12 @@
 
 one:
   color: 
-  name: 
-  description: 
+  name: MyString
+  description: MyText
   child: 
 
 two:
   color: 
-  name: 
-  description: 
+  name: MyString
+  description: MyText
   child: 

@@ -1,0 +1,4 @@
+class Avatar < ActiveRecord::Base
+  belongs_to :child
+  attr_accessible :color, :description, :name
+end

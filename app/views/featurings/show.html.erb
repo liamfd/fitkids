@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Level:</b>
+  <%= @featuring.level %>
+</p>
+
+<p>
+  <b>Avatar:</b>
+  <%= @featuring.avatar %>
+</p>
+
+<p>
+  <b>Feature:</b>
+  <%= @featuring.feature %>
+</p>
+
+
+<%= link_to 'Edit', edit_featuring_path(@featuring) %> |
+<%= link_to 'Back', featurings_path %>

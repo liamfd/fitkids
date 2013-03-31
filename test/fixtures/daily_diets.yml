@@ -2,8 +2,7 @@
 
 one:
   personal_score: 
-  veggie_eaten: MyString
-  int,: MyString
+  veggie_eaten: 
   prot_eaten: 
   carbs_eaten: 
   fruit_eaten: 
@@ -14,8 +13,7 @@ one:
 
 two:
   personal_score: 
-  veggie_eaten: MyString
-  int,: MyString
+  veggie_eaten: 
   prot_eaten: 
   carbs_eaten: 
   fruit_eaten: 

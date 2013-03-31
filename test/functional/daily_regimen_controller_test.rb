@@ -17,8 +17,8 @@ class DailyRegimenControllerTest < ActionController::TestCase
   end
 
   test "should create daily_regiman" do
-    assert_difference('DailyRegiman.count') do
-      post :create, daily_regiman: { child: @daily_regiman.child, focus: @daily_regiman.focus }
+    assert_difference('DailyRegimen.count') do
+      post :create, daily_regiman: { focus: @daily_regiman.focus }
     end
 
     assert_redirected_to daily_regiman_path(assigns(:daily_regiman))
@@ -35,15 +35,15 @@ class DailyRegimenControllerTest < ActionController::TestCase
   end
 
   test "should update daily_regiman" do
-    put :update, id: @daily_regiman, daily_regiman: { child: @daily_regiman.child, focus: @daily_regiman.focus }
+    put :update, id: @daily_regiman, daily_regiman: { focus: @daily_regiman.focus }
     assert_redirected_to daily_regiman_path(assigns(:daily_regiman))
   end
 
   test "should destroy daily_regiman" do
-    assert_difference('DailyRegiman.count', -1) do
+    assert_difference('DailyRegimen.count', -1) do
       delete :destroy, id: @daily_regiman
     end
 
-    assert_redirected_to daily_regimen_path
+    assert_redirected_to daily_regimen_index_path
   end
 end

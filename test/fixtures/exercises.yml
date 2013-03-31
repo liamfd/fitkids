@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  body_part: 
+  body_part: MyString
   difficulty: 
-  description: 
+  description: MyText
   reps: 
 
 two:
-  body_part: 
+  body_part: MyString
   difficulty: 
-  description: 
+  description: MyText
   reps: 

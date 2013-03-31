@@ -3,11 +3,9 @@
 one:
   name: MyString
   appearance: MyString
-  level: 
   feature_type: MyString
 
 two:
   name: MyString
   appearance: MyString
-  level: 
   feature_type: MyString

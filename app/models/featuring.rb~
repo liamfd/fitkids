@@ -1,0 +1,5 @@
+class Featuring < ActiveRecord::Base
+  belongs_to :avatar
+  belongs_to :feature
+  attr_accessible :level
+end
