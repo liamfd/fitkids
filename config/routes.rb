@@ -1,4 +1,7 @@
 Fitkids::Application.routes.draw do
+  resources :monitor_child_relationships
+
+
   resources :daily_regimen
 
 
@@ -33,9 +36,6 @@ Fitkids::Application.routes.draw do
 
 
   resources :monitor_profiles
-
-
-  resources :monitor_child_relationships
 
 
   resources :children

@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  relation: 
+  relation: MyString
   bonus: 1.5
   child: 
   monitor: 
 
 two:
-  relation: 
+  relation: MyString
   bonus: 1.5
   child: 
   monitor: 

@@ -1,5 +1,5 @@
 rails generate scaffold Child name:string level:integer points:integer date_of_birth:date height:float weight:float sex:string diet_score:integer exercise_score:integer diet_plan:references
-rails generate scaffold MonitorChildRelationship relation:String bonus:float child:references monitor:references
+rails generate scaffold MonitorChildRelationship relation:string bonus:float child:references monitor:references
 rails generate scaffold MonitorProfile name:string bio:text
 rails generate scaffold Leaderboard board_type:string age_group:integer exercise:references
 rails generate scaffold DailyDiet personal_score:integer veggie_eaten:integer prot_eaten:integer carbs_eaten:integer fruit_eaten:integer water_drank:integer sweets_eaten:integer child:references diet_plan:references
