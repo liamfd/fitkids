@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  reps: 
+  reps: 1
   exercise: 
   daily_regimen: 
 
 two:
-  reps: 
+  reps: 1
   exercise: 
   daily_regimen: 

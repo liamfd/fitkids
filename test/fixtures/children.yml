@@ -2,24 +2,24 @@
 
 one:
   name: MyString
-  level: 
-  points: 
+  level: 1
+  points: 1
   date_of_birth: 2013-03-31
   height: 1.5
   weight: 1.5
   sex: MyString
-  diet_score: 
-  exercise_score: 
+  diet_score: 1
+  exercise_score: 1
   diet_plan: 
 
 two:
   name: MyString
-  level: 
-  points: 
+  level: 1
+  points: 1
   date_of_birth: 2013-03-31
   height: 1.5
   weight: 1.5
   sex: MyString
-  diet_score: 
-  exercise_score: 
+  diet_score: 1
+  exercise_score: 1
   diet_plan: 

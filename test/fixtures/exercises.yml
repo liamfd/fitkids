@@ -2,12 +2,12 @@
 
 one:
   body_part: MyString
-  difficulty: 
+  difficulty: 1
   description: MyText
-  reps: 
+  reps: 1
 
 two:
   body_part: MyString
-  difficulty: 
+  difficulty: 1
   description: MyText
-  reps: 
+  reps: 1

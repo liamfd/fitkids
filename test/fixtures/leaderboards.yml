@@ -2,10 +2,10 @@
 
 one:
   board_type: MyString
-  age_group: 
+  age_group: 1
   exercise: 
 
 two:
   board_type: MyString
-  age_group: 
+  age_group: 1
   exercise: 

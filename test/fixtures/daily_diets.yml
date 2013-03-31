@@ -1,23 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  personal_score: 
-  veggie_eaten: 
-  prot_eaten: 
-  carbs_eaten: 
-  fruit_eaten: 
-  water_drank: 
-  sweets_eaten: 
+  personal_score: 1
+  veggie_eaten: 1
+  prot_eaten: 1
+  carbs_eaten: 1
+  fruit_eaten: 1
+  water_drank: 1
+  sweets_eaten: 1
   child: 
   diet_plan: 
 
 two:
-  personal_score: 
-  veggie_eaten: 
-  prot_eaten: 
-  carbs_eaten: 
-  fruit_eaten: 
-  water_drank: 
-  sweets_eaten: 
+  personal_score: 1
+  veggie_eaten: 1
+  prot_eaten: 1
+  carbs_eaten: 1
+  fruit_eaten: 1
+  water_drank: 1
+  sweets_eaten: 1
   child: 
   diet_plan: 

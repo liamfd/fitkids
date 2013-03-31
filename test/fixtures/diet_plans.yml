@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  veggie_serv: 
-  prot_serv: 
-  carbs_serv: 
-  fruit_serv: 
-  water_serv: 
-  sweets_serv: 
+  veggie_serv: 1
+  prot_serv: 1
+  carbs_serv: 1
+  fruit_serv: 1
+  water_serv: 1
+  sweets_serv: 1
 
 two:
-  veggie_serv: 
-  prot_serv: 
-  carbs_serv: 
-  fruit_serv: 
-  water_serv: 
-  sweets_serv: 
+  veggie_serv: 1
+  prot_serv: 1
+  carbs_serv: 1
+  fruit_serv: 1
+  water_serv: 1
+  sweets_serv: 1

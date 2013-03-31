@@ -1,14 +1,11 @@
 Fitkids::Application.routes.draw do
+  resources :daily_regimen
+
+
   resources :featurings
 
 
   resources :features
-
-
-  resources :avatars
-
-
-  resources :daily_regimen
 
 
   resources :exercise_reps
@@ -18,6 +15,9 @@ Fitkids::Application.routes.draw do
 
 
   resources :articles
+
+
+  resources :avatars
 
 
   resources :exercises

@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  level: 
+  level: 1
   avatar: 
   feature: 
 
 two:
-  level: 
+  level: 1
   avatar: 
   feature: 

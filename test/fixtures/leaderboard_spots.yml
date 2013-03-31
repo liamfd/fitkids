@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  place: 
+  place: 1
   leaderboard: 
   child: 
 
 two:
-  place: 
+  place: 1
   leaderboard: 
   child: 
