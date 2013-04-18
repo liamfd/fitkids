@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Birth date:</b>
+  <%= @user.birth_date %>
+</p>
+
+<p>
+  <b>Sex:</b>
+  <%= @user.sex %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%= @user.height %>
+</p>
+
+<p>
+  <b>Weight:</b>
+  <%= @user.weight %>
+</p>
+
+<p>
+  <b>Points:</b>
+  <%= @user.points %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @user.level %>
+</p>
+
+<p>
+  <b>Exercise score:</b>
+  <%= @user.exercise_score %>
+</p>
+
+<p>
+  <b>Diet score:</b>
+  <%= @user.diet_score %>
+</p>
+
+<p>
+  <b>Bio:</b>
+  <%= @user.bio %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @user.type %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

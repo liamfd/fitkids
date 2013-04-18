@@ -1,0 +1,13 @@
+rails generate scaffold Child name:string, level:int, points:int, date_of_birth:date, height:float, weight:float, sex:string, diet_score:int, exercise_score:int, diet_plan:reference
+rails generate scaffold MonitorChildRelationship relation:String, bonus:float, child:reference, monitor:reference
+rails generate scaffold MonitorProfile name:string, bio:text
+rails generate scaffold Leaderboard board_type:string, age_group:int, exercise:reference
+rails generate scaffold DailyDiet personal_score:int, veggie_eaten: int, prot_eaten:int, carbs_eaten:int, fruit_eaten:int, water_drank:int, sweets_eaten:int, child:reference, diet_plan:reference
+rails generate scaffold DietPlan veggie_serv:int, prot_serv:int, carbs_serv:int, fruit_serv:int, water_serv:int, sweets_serv:int
+rails generate scaffold Exercise body_part:string, difficulty:int, description:text, reps:int
+rails generate scaffold DailyRegimen focus:string, child:reference
+rails generate scaffold Avatar color:int name:string, description:text, child:reference
+rails generate scaffold Feature name:string appearance:string level:int feature_type:string
+rails generate scaffold Article name:string, topic:string, content:text
+rails generate scaffold LeaderboardSpot place:int, leaderboard:reference, child:reference
+rails generate scaffold ExerciseRep reps:int, exercise:reference, daily_regimen:reference

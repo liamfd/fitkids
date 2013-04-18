@@ -1,0 +1,29 @@
+<h1>Listing child_guardian_relationships</h1>
+
+<table>
+  <tr>
+    <th>Relation</th>
+    <th>Bonus</th>
+    <th>Child</th>
+    <th>Guardian</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @child_guardian_relationships.each do |child_guardian_relationship| %>
+  <tr>
+    <td><%= child_guardian_relationship.relation %></td>
+    <td><%= child_guardian_relationship.bonus %></td>
+    <td><%= child_guardian_relationship.child %></td>
+    <td><%= child_guardian_relationship.guardian %></td>
+    <td><%= link_to 'Show', child_guardian_relationship %></td>
+    <td><%= link_to 'Edit', edit_child_guardian_relationship_path(child_guardian_relationship) %></td>
+    <td><%= link_to 'Destroy', child_guardian_relationship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Child guardian relationship', new_child_guardian_relationship_path %>

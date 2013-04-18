@@ -1,5 +1,18 @@
 Fitkids::Application.routes.draw do
-  resources :monitor_child_relationships
+  devise_for :admins
+
+  devise_for :watchers
+
+  devise_for :children
+
+  get "home/index"
+
+  devise_for :users
+
+  resources :child_guardian_relationships
+
+
+  resources :users
 
 
   resources :daily_regimen
@@ -33,12 +46,6 @@ Fitkids::Application.routes.draw do
 
 
   resources :leaderboards
-
-
-  resources :monitor_profiles
-
-
-  resources :children
 
 
   # The priority is based upon order of creation:
@@ -90,7 +97,7 @@ Fitkids::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 

@@ -1,5 +1,5 @@
 class Featuring < ActiveRecord::Base
-  belongs_to :avatar
-  belongs_to :feature
   attr_accessible :level
+  belongs_to :avatar, inverse_of: :featuring
+  belongs_to :feature, inverse_of: :featuring
 end

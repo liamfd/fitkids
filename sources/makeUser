@@ -1,0 +1,1 @@
+rails generate scaffold user name:string birth_date:date sex:string height:integer weight:integer points:integer level:integer exercise_score:integer diet_score:integer bio:text type:string

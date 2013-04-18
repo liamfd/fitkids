@@ -1,4 +1,5 @@
 class Avatar < ActiveRecord::Base
-  belongs_to :child
   attr_accessible :color, :description, :name
+  belongs_to :child, inverse_of: :Avatar
+  has_many :featurings, inverse_of: :Avatar
 end

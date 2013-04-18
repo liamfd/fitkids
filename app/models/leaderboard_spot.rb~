@@ -1,5 +1,5 @@
 class LeaderboardSpot < ActiveRecord::Base
-  belongs_to :leaderboard
-  belongs_to :child
   attr_accessible :place
+  belongs_to :leaderboard, inverse_of: :leaderboard_spot
+  belongs_to :child, inverse_of: :leaderboard_spot
 end

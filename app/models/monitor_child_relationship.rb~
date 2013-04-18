@@ -1,5 +1,5 @@
 class MonitorChildRelationship < ActiveRecord::Base
-  belongs_to :child
-  belongs_to :monitor
   attr_accessible :bonus, :relation
+  belongs_to :child, inverse_of: :monitor_child_relationship
+  belongs_to :monitor, inverse_of: :monitor_child_relationship
 end

@@ -1,7 +1,8 @@
-<h1>Listing diet_plans</h1>
+<h1>Listing Diet Plans</h1>
 
 <table>
   <tr>
+		<th>Diet name</th>
     <th>Veggie serv</th>
     <th>Prot serv</th>
     <th>Carbs serv</th>
@@ -15,6 +16,7 @@
 
 <% @diet_plans.each do |diet_plan| %>
   <tr>
+		<td><%= diet_plan.diet_name %></td>
     <td><%= diet_plan.veggie_serv %></td>
     <td><%= diet_plan.prot_serv %></td>
     <td><%= diet_plan.carbs_serv %></td>

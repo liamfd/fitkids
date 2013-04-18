@@ -1,0 +1,33 @@
+<%= form_for(@child_guardian_relationship) do |f| %>
+  <% if @child_guardian_relationship.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@child_guardian_relationship.errors.count, "error") %> prohibited this child_guardian_relationship from being saved:</h2>
+
+      <ul>
+      <% @child_guardian_relationship.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :relation %><br />
+    <%= f.text_field :relation %>
+  </div>
+  <div class="field">
+    <%= f.label :bonus %><br />
+    <%= f.text_field :bonus %>
+  </div>
+  <div class="field">
+    <%= f.label :child %><br />
+    <%= f.text_field :child %>
+  </div>
+  <div class="field">
+    <%= f.label :guardian %><br />
+    <%= f.text_field :guardian %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

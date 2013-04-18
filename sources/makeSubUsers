@@ -1,0 +1,3 @@
+rails destroy model child
+rails destroy model watcher
+rails destroy model admin
