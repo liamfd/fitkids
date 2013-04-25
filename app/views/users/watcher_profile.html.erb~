@@ -1,0 +1,16 @@
+<h1>Kid Profile!</h1>
+
+<img src="/assets/images/exAvatar.png" id="avatarPic">
+<br/>
+<div class="majorProgBar">
+		<div class="innerBar"></div>
+</div>
+<br/>
+<div class="minorProgBar">
+		<div class="innerBar"></div>
+</div>
+<br/>
+<div class="minorProgBar">
+		<div class="innerBar"></div>
+</div>
+<br/>

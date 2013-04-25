@@ -95,6 +95,14 @@ header{
 	}
 }
 
+h1{
+	a{
+		font-family:inherit;
+		color:inherit;
+		text-decoration:none;
+	}
+}
+
 @mixin navLinks{
 	float:left;
 	margin:5px;
@@ -102,7 +110,7 @@ header{
 	text-decoration:none;
 	text-align:center;
 	text-transform:lowercase;
-		font-size:18px;
+	font-size:18px;
 	font-weight:bold;
 	color:#ffffff;
 }
@@ -147,3 +155,75 @@ nav{
 		}
   }
 }
+
+h2{
+	color:#bC3C9B;
+	font-size:36px;
+}
+
+h3{
+	color:#bC3C9B;
+	font-size:28px;
+}
+
+h4{
+	color:#777777;
+	font-size:18px;
+}
+
+/*This should probs be in another stylesheet*/
+
+@mixin progBar{
+	position:relative;
+	border-radius:5px;
+	border:2px solid #bC3C9B;
+	overflow:hidden;
+	background-color:#dddddd;
+}
+.majorProgBar{
+	@include progBar;
+	height:36px;
+	width:550px;
+	.innerBar{
+		margin-left:-275px;
+		margin-top:-18px;
+	}
+}
+
+.minorProgBar{
+	@include progBar;
+	height:26px;
+	width:400px;
+	.innerBar{
+		margin-left:-200px;
+		margin-top:-13px;
+	}
+}
+
+.innerBar{
+	position:absolute;
+	background-color:#449944;
+	width:50%;
+	height:100%;
+	left:50%;
+	top:50%;
+	z-index:3;
+}
+@mixin spots{
+	float:left;
+	overflow:hidden;
+	padding:10px;
+	.minorProgBar{
+		margin:10px;
+	}	
+}
+
+#diet_spot{
+	@include spots;
+}
+
+#exercise_spot{
+	@include spots;
+}
+
+

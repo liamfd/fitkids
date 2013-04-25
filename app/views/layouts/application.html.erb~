@@ -11,9 +11,13 @@
 <body id="pageBody">
 	<div id="headerWrapper">
 		<header>
-			<h1>Fitkids!</h1>
+			<h1><%= link_to "Fitkids", "/"%></h1>
 			<nav>
-				<a href="">Profile</a>
+				<% if child_signed_in? %>
+						<%= link_to('Profile', "/child_profile") %>        
+				<% elsif watcher_signed_in? %>
+						<%= link_to('Profile', "/watcher_profile") %>            
+				<% end %>	
 				<a href="">Leaderboard</a>
 				<a href="">About</a>
 				<a href="">Contact</a>
@@ -21,15 +25,26 @@
 		</header>
 	</div>
 	<div id="main">
-  
 		<div id="hmenu">
-		<% if user_signed_in? %>
+		<% if child_signed_in? %>
+			<div>
+			You're a kid!
+			<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+			</div>
+		<% elsif watcher_signed_in? %>
+			You're a watcher!
 			<div>
 			<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
 			</div>
+		<% elsif user_signed_in? %>
+			<div>
+			You signed in weird.
+			<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>    
+			</div>
 		<% else %>
 			<div>
-			<%= link_to('Login', new_user_session_path)  %>  
+			poo.
+			<%= link_to('Login', new_user_session_path)  %>   
 			</div>
 		<% end %>
 		</div>
