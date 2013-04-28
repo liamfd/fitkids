@@ -13,11 +13,9 @@
 		<header>
 			<h1><%= link_to "Fitkids", "/"%></h1>
 			<nav>
-				<% if child_signed_in? %>
-						<%= link_to('Profile', "/child_profile") %>        
-				<% elsif watcher_signed_in? %>
-						<%= link_to('Profile', "/watcher_profile") %>            
-				<% end %>	
+				<% if user_signed_in? %>
+					<%=  link_to "child_profile", :controller => "users", :action=> 'child_profile', :id=>14%> 
+				<% end %>
 				<%= link_to "Leaderboard", "/"%>
 				<%= link_to "About", "/"%>
 				<%= link_to "Contact", "/"%>
@@ -26,7 +24,7 @@
 	</div>
 	<div id="main">
 		<div id="hmenu">
-		<% if child_signed_in? %>
+		<% if current_user.present? %>
 			<div>
 			You're a kid!
 			<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        

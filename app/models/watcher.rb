@@ -8,4 +8,8 @@ class Watcher < User
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
+
+  def self.model_name
+    User.model_name
+  end
 end

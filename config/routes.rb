@@ -1,9 +1,8 @@
 Fitkids::Application.routes.draw do
-  devise_for :admins
 
   devise_for :watchers
 
-  devise_for :children
+  devise_for :children, :controllers => { :sessions => "children/sessions" }
 
   get "home/index"
 
@@ -98,9 +97,23 @@ Fitkids::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   root :to => 'home#index'
-	match '/child_profile' => 'users#kid_profile.html.erb'
-	match '/watcher_profile' => 'users#watcher_profile.html.erb'
-	
+
+	#Do we need these?
+	#match 'users/child_profile' => 'users#child_profile'
+	#match 'users/watcher_profile' => 'users#watcher_profile'
+  #ridgway had me drop the .html.erb
+	resources :users do
+    member do
+      get 'child_profile'
+    end
+  end
+  resources :users do
+    member do
+      get 'watcher_profile'
+    end
+  end
+
+
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

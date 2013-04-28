@@ -1,0 +1,17 @@
+class ChangeDailyDiets < ActiveRecord::Migration
+  def up
+  	change_table :DailyDiets do |t|
+  	  t.integer :personal_score, default: 0
+      t.integer :veggie_eaten, default: 0
+      t.integer :prot_eaten, default: 0
+      t.integer :carbs_eaten, default: 0
+      t.integer :fruit_eaten, default: 0
+      t.integer :water_drank, default: 0
+      t.integer :sweets_eaten, default: 0
+      t.timestamps
+ 		end
+  end
+
+  def down
+  end
+end

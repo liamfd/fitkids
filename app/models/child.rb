@@ -12,5 +12,13 @@ class Child < User
   has_many :dailyregimens, inverse_of: :child
   has_many :monitor_child_relationships, inverse_of: :child
   has_many :leaderboard_spots, inverse_of: :child
+  
+  def incCarbs()
+  	daily_diets.carbs_eaten += 1
+  end
+
+  def self.model_name
+    User.model_name
+  end
 
 end

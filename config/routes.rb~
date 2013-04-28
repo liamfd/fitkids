@@ -1,9 +1,8 @@
 Fitkids::Application.routes.draw do
-  devise_for :admins
 
   devise_for :watchers
 
-  devise_for :children
+  devise_for :children, :controllers => { :sessions => "children/sessions" }
 
   get "home/index"
 
@@ -97,14 +96,11 @@ Fitkids::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  #root :to => 'home#index'
+  root :to => 'home#index'
+
+	#Do we need these?
 	match '/child_profile' => 'users#kid_profile.html.erb'
 	match '/watcher_profile' => 'users#watcher_profile.html.erb'
-	if child_signed_in? 
-		match :profs => 'users#kid_profile.html.erb'
-	else
-		root :profs => 'home#index'
-	end
 	
   # See how all your routes lay out with "rake routes"
 

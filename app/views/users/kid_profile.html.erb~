@@ -1,6 +1,6 @@
 <h2>Kid Profile!</h2>
 
-<%= image_tag('/app/assets/images/avatarEx.png') %>
+<%= image_tag('avatarEx.png') %>
 <br/>
 <br/>
  
@@ -26,8 +26,9 @@
 	 
 	 <h4>Carbs:</h4>
 	<div class="minorProgBar">
-		<div class="innerBar"></div>
+		<div class="innerBar" style="width:<%=daily_diet.carbs_eaten/daily_diet.diet_plan.carbs_serv%>%"></div>
 	</div>
+	<%= button_to "+Carbs", :method => 'incrementCarbs' %>
 	 
 	 <h4>Protein:</h4>
 	<div class="minorProgBar">

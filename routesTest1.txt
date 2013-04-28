@@ -1,0 +1,147 @@
+               new_admin_session GET    /admins/sign_in(.:format)                        devise/sessions#new
+                   admin_session POST   /admins/sign_in(.:format)                        devise/sessions#create
+           destroy_admin_session DELETE /admins/sign_out(.:format)                       devise/sessions#destroy
+                  admin_password POST   /admins/password(.:format)                       devise/passwords#create
+              new_admin_password GET    /admins/password/new(.:format)                   devise/passwords#new
+             edit_admin_password GET    /admins/password/edit(.:format)                  devise/passwords#edit
+                                 PUT    /admins/password(.:format)                       devise/passwords#update
+       cancel_admin_registration GET    /admins/cancel(.:format)                         devise/registrations#cancel
+              admin_registration POST   /admins(.:format)                                devise/registrations#create
+          new_admin_registration GET    /admins/sign_up(.:format)                        devise/registrations#new
+         edit_admin_registration GET    /admins/edit(.:format)                           devise/registrations#edit
+                                 PUT    /admins(.:format)                                devise/registrations#update
+                                 DELETE /admins(.:format)                                devise/registrations#destroy
+             new_watcher_session GET    /watchers/sign_in(.:format)                      devise/sessions#new
+                 watcher_session POST   /watchers/sign_in(.:format)                      devise/sessions#create
+         destroy_watcher_session DELETE /watchers/sign_out(.:format)                     devise/sessions#destroy
+                watcher_password POST   /watchers/password(.:format)                     devise/passwords#create
+            new_watcher_password GET    /watchers/password/new(.:format)                 devise/passwords#new
+           edit_watcher_password GET    /watchers/password/edit(.:format)                devise/passwords#edit
+                                 PUT    /watchers/password(.:format)                     devise/passwords#update
+     cancel_watcher_registration GET    /watchers/cancel(.:format)                       devise/registrations#cancel
+            watcher_registration POST   /watchers(.:format)                              devise/registrations#create
+        new_watcher_registration GET    /watchers/sign_up(.:format)                      devise/registrations#new
+       edit_watcher_registration GET    /watchers/edit(.:format)                         devise/registrations#edit
+                                 PUT    /watchers(.:format)                              devise/registrations#update
+                                 DELETE /watchers(.:format)                              devise/registrations#destroy
+               new_child_session GET    /children/sign_in(.:format)                      devise/sessions#new
+                   child_session POST   /children/sign_in(.:format)                      devise/sessions#create
+           destroy_child_session DELETE /children/sign_out(.:format)                     devise/sessions#destroy
+                  child_password POST   /children/password(.:format)                     devise/passwords#create
+              new_child_password GET    /children/password/new(.:format)                 devise/passwords#new
+             edit_child_password GET    /children/password/edit(.:format)                devise/passwords#edit
+                                 PUT    /children/password(.:format)                     devise/passwords#update
+       cancel_child_registration GET    /children/cancel(.:format)                       devise/registrations#cancel
+              child_registration POST   /children(.:format)                              devise/registrations#create
+          new_child_registration GET    /children/sign_up(.:format)                      devise/registrations#new
+         edit_child_registration GET    /children/edit(.:format)                         devise/registrations#edit
+                                 PUT    /children(.:format)                              devise/registrations#update
+                                 DELETE /children(.:format)                              devise/registrations#destroy
+                      home_index GET    /home/index(.:format)                            home#index
+                new_user_session GET    /users/sign_in(.:format)                         devise/sessions#new
+                    user_session POST   /users/sign_in(.:format)                         devise/sessions#create
+            destroy_user_session DELETE /users/sign_out(.:format)                        devise/sessions#destroy
+                   user_password POST   /users/password(.:format)                        devise/passwords#create
+               new_user_password GET    /users/password/new(.:format)                    devise/passwords#new
+              edit_user_password GET    /users/password/edit(.:format)                   devise/passwords#edit
+                                 PUT    /users/password(.:format)                        devise/passwords#update
+        cancel_user_registration GET    /users/cancel(.:format)                          devise/registrations#cancel
+               user_registration POST   /users(.:format)                                 devise/registrations#create
+           new_user_registration GET    /users/sign_up(.:format)                         devise/registrations#new
+          edit_user_registration GET    /users/edit(.:format)                            devise/registrations#edit
+                                 PUT    /users(.:format)                                 devise/registrations#update
+                                 DELETE /users(.:format)                                 devise/registrations#destroy
+    child_guardian_relationships GET    /child_guardian_relationships(.:format)          child_guardian_relationships#index
+                                 POST   /child_guardian_relationships(.:format)          child_guardian_relationships#create
+ new_child_guardian_relationship GET    /child_guardian_relationships/new(.:format)      child_guardian_relationships#new
+edit_child_guardian_relationship GET    /child_guardian_relationships/:id/edit(.:format) child_guardian_relationships#edit
+     child_guardian_relationship GET    /child_guardian_relationships/:id(.:format)      child_guardian_relationships#show
+                                 PUT    /child_guardian_relationships/:id(.:format)      child_guardian_relationships#update
+                                 DELETE /child_guardian_relationships/:id(.:format)      child_guardian_relationships#destroy
+                           users GET    /users(.:format)                                 users#index
+                                 POST   /users(.:format)                                 users#create
+                        new_user GET    /users/new(.:format)                             users#new
+                       edit_user GET    /users/:id/edit(.:format)                        users#edit
+                            user GET    /users/:id(.:format)                             users#show
+                                 PUT    /users/:id(.:format)                             users#update
+                                 DELETE /users/:id(.:format)                             users#destroy
+                   daily_regimen GET    /daily_regimen(.:format)                         daily_regimen#index
+                                 POST   /daily_regimen(.:format)                         daily_regimen#create
+               new_daily_regiman GET    /daily_regimen/new(.:format)                     daily_regimen#new
+              edit_daily_regiman GET    /daily_regimen/:id/edit(.:format)                daily_regimen#edit
+                   daily_regiman GET    /daily_regimen/:id(.:format)                     daily_regimen#show
+                                 PUT    /daily_regimen/:id(.:format)                     daily_regimen#update
+                                 DELETE /daily_regimen/:id(.:format)                     daily_regimen#destroy
+                      featurings GET    /featurings(.:format)                            featurings#index
+                                 POST   /featurings(.:format)                            featurings#create
+                   new_featuring GET    /featurings/new(.:format)                        featurings#new
+                  edit_featuring GET    /featurings/:id/edit(.:format)                   featurings#edit
+                       featuring GET    /featurings/:id(.:format)                        featurings#show
+                                 PUT    /featurings/:id(.:format)                        featurings#update
+                                 DELETE /featurings/:id(.:format)                        featurings#destroy
+                        features GET    /features(.:format)                              features#index
+                                 POST   /features(.:format)                              features#create
+                     new_feature GET    /features/new(.:format)                          features#new
+                    edit_feature GET    /features/:id/edit(.:format)                     features#edit
+                         feature GET    /features/:id(.:format)                          features#show
+                                 PUT    /features/:id(.:format)                          features#update
+                                 DELETE /features/:id(.:format)                          features#destroy
+                   exercise_reps GET    /exercise_reps(.:format)                         exercise_reps#index
+                                 POST   /exercise_reps(.:format)                         exercise_reps#create
+                new_exercise_rep GET    /exercise_reps/new(.:format)                     exercise_reps#new
+               edit_exercise_rep GET    /exercise_reps/:id/edit(.:format)                exercise_reps#edit
+                    exercise_rep GET    /exercise_reps/:id(.:format)                     exercise_reps#show
+                                 PUT    /exercise_reps/:id(.:format)                     exercise_reps#update
+                                 DELETE /exercise_reps/:id(.:format)                     exercise_reps#destroy
+               leaderboard_spots GET    /leaderboard_spots(.:format)                     leaderboard_spots#index
+                                 POST   /leaderboard_spots(.:format)                     leaderboard_spots#create
+            new_leaderboard_spot GET    /leaderboard_spots/new(.:format)                 leaderboard_spots#new
+           edit_leaderboard_spot GET    /leaderboard_spots/:id/edit(.:format)            leaderboard_spots#edit
+                leaderboard_spot GET    /leaderboard_spots/:id(.:format)                 leaderboard_spots#show
+                                 PUT    /leaderboard_spots/:id(.:format)                 leaderboard_spots#update
+                                 DELETE /leaderboard_spots/:id(.:format)                 leaderboard_spots#destroy
+                        articles GET    /articles(.:format)                              articles#index
+                                 POST   /articles(.:format)                              articles#create
+                     new_article GET    /articles/new(.:format)                          articles#new
+                    edit_article GET    /articles/:id/edit(.:format)                     articles#edit
+                         article GET    /articles/:id(.:format)                          articles#show
+                                 PUT    /articles/:id(.:format)                          articles#update
+                                 DELETE /articles/:id(.:format)                          articles#destroy
+                         avatars GET    /avatars(.:format)                               avatars#index
+                                 POST   /avatars(.:format)                               avatars#create
+                      new_avatar GET    /avatars/new(.:format)                           avatars#new
+                     edit_avatar GET    /avatars/:id/edit(.:format)                      avatars#edit
+                          avatar GET    /avatars/:id(.:format)                           avatars#show
+                                 PUT    /avatars/:id(.:format)                           avatars#update
+                                 DELETE /avatars/:id(.:format)                           avatars#destroy
+                       exercises GET    /exercises(.:format)                             exercises#index
+                                 POST   /exercises(.:format)                             exercises#create
+                    new_exercise GET    /exercises/new(.:format)                         exercises#new
+                   edit_exercise GET    /exercises/:id/edit(.:format)                    exercises#edit
+                        exercise GET    /exercises/:id(.:format)                         exercises#show
+                                 PUT    /exercises/:id(.:format)                         exercises#update
+                                 DELETE /exercises/:id(.:format)                         exercises#destroy
+                      diet_plans GET    /diet_plans(.:format)                            diet_plans#index
+                                 POST   /diet_plans(.:format)                            diet_plans#create
+                   new_diet_plan GET    /diet_plans/new(.:format)                        diet_plans#new
+                  edit_diet_plan GET    /diet_plans/:id/edit(.:format)                   diet_plans#edit
+                       diet_plan GET    /diet_plans/:id(.:format)                        diet_plans#show
+                                 PUT    /diet_plans/:id(.:format)                        diet_plans#update
+                                 DELETE /diet_plans/:id(.:format)                        diet_plans#destroy
+                     daily_diets GET    /daily_diets(.:format)                           daily_diets#index
+                                 POST   /daily_diets(.:format)                           daily_diets#create
+                  new_daily_diet GET    /daily_diets/new(.:format)                       daily_diets#new
+                 edit_daily_diet GET    /daily_diets/:id/edit(.:format)                  daily_diets#edit
+                      daily_diet GET    /daily_diets/:id(.:format)                       daily_diets#show
+                                 PUT    /daily_diets/:id(.:format)                       daily_diets#update
+                                 DELETE /daily_diets/:id(.:format)                       daily_diets#destroy
+                    leaderboards GET    /leaderboards(.:format)                          leaderboards#index
+                                 POST   /leaderboards(.:format)                          leaderboards#create
+                 new_leaderboard GET    /leaderboards/new(.:format)                      leaderboards#new
+                edit_leaderboard GET    /leaderboards/:id/edit(.:format)                 leaderboards#edit
+                     leaderboard GET    /leaderboards/:id(.:format)                      leaderboards#show
+                                 PUT    /leaderboards/:id(.:format)                      leaderboards#update
+                                 DELETE /leaderboards/:id(.:format)                      leaderboards#destroy
+                            root        /                                                home#index
+                   child_profile        /child_profile(.:format)                         users#kid_profile.html.erb
+                 watcher_profile        /watcher_profile(.:format)                       users#watcher_profile.html.erb

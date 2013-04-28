@@ -14,13 +14,12 @@
 			<h1><%= link_to "Fitkids", "/"%></h1>
 			<nav>
 				<% if child_signed_in? %>
-						<%= link_to('Profile', "/child_profile") %>        
-				<% elsif watcher_signed_in? %>
-						<%= link_to('Profile', "/watcher_profile") %>            
+						<%= link_to 'Profile', {:controller => 'users', :action => 'kid_profile'} %>        
+				<% elsif watcher_signed_in? %>         
 				<% end %>	
-				<a href="">Leaderboard</a>
-				<a href="">About</a>
-				<a href="">Contact</a>
+				<%= link_to "Leaderboard", "/"%>
+				<%= link_to "About", "/"%>
+				<%= link_to "Contact", "/"%>
 			</nav>
 		</header>
 	</div>

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
 
-    respond_to do |format|
+    form_for @user, url: child_path(@user), html: { method: :get } do |f|
       format.html # index.html.erb
       format.json { render json: @users }
     end
@@ -20,6 +20,30 @@ class UsersController < ApplicationController
       format.json { render json: @user }
     end
   end
+  
+  # GET /users/1
+  # GET /users/1.json
+  def kid_profile
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @user }
+    end
+  end
+
+
+  # GET /users/1
+  # GET /users/1.json
+  def watcher_profile
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @user }
+    end
+  end
+
 
   # GET /users/new
   # GET /users/new.json
@@ -81,30 +105,22 @@ class UsersController < ApplicationController
     end
   end
   
-    # DELETE /users/1
-  # DELETE /users/1.json
-  def child_profile
-    @user = User.find(params[:id])
-    @user.destroy
+  # PUT /users/1
+  # PUT /users/1.json
+  def incrementCarbs
+  	#@user = current_user
+    #@user = User.find(params[:id])
+    user.incCarbs()
 
     respond_to do |format|
-      format.html { redirect_to users_url }
-      format.json { head :no_content }
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
-  
-  # DELETE /users/1
-  # DELETE /users/1.json
-  def monitor_profile
-    @user = User.find(params[:id])
-    @user.destroy
 
-    respond_to do |format|
-      format.html { redirect_to users_url }
-      format.json { head :no_content }
-    end
-  end
-  
-  
-  
 end
