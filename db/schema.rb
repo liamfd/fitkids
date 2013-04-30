@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130404050021) do
+ActiveRecord::Schema.define(:version => 20130430014035) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -64,14 +64,14 @@ ActiveRecord::Schema.define(:version => 20130404050021) do
 
   create_table "children", :force => true do |t|
     t.string   "name"
-    t.integer  "level"
-    t.integer  "points"
+    t.integer  "level",                  :default => 1
+    t.integer  "points",                 :default => 0
     t.date     "date_of_birth"
     t.float    "height"
     t.float    "weight"
     t.string   "sex"
-    t.integer  "diet_score"
-    t.integer  "exercise_score"
+    t.integer  "diet_score",             :default => 0
+    t.integer  "exercise_score",         :default => 0
     t.integer  "diet_plan_id"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20130404050021) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "leaderboard"
   end
 
   add_index "children", ["diet_plan_id"], :name => "index_children_on_diet_plan_id"
@@ -92,17 +93,18 @@ ActiveRecord::Schema.define(:version => 20130404050021) do
   add_index "children", ["reset_password_token"], :name => "index_children_on_reset_password_token", :unique => true
 
   create_table "daily_diets", :force => true do |t|
-    t.integer  "personal_score"
-    t.integer  "veggie_eaten"
-    t.integer  "prot_eaten"
-    t.integer  "carbs_eaten"
-    t.integer  "fruit_eaten"
-    t.integer  "water_drank"
-    t.integer  "sweets_eaten"
     t.integer  "child_id"
     t.integer  "diet_plan_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.date     "day_date"
+    t.integer  "personal_score", :default => 0
+    t.integer  "veggie_eaten",   :default => 0
+    t.integer  "prot_eaten",     :default => 0
+    t.integer  "carbs_eaten",    :default => 0
+    t.integer  "fruit_eaten",    :default => 0
+    t.integer  "water_drank",    :default => 0
+    t.integer  "sweets_eaten",   :default => 0
   end
 
   add_index "daily_diets", ["child_id"], :name => "index_daily_diets_on_child_id"
@@ -185,6 +187,7 @@ ActiveRecord::Schema.define(:version => 20130404050021) do
     t.integer  "exercise_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "child"
   end
 
   add_index "leaderboards", ["exercise_id"], :name => "index_leaderboards_on_exercise_id"
@@ -214,10 +217,10 @@ ActiveRecord::Schema.define(:version => 20130404050021) do
     t.string   "sex"
     t.integer  "height"
     t.integer  "weight"
-    t.integer  "points"
-    t.integer  "level"
-    t.integer  "exercise_score"
-    t.integer  "diet_score"
+    t.integer  "points",                 :default => 0
+    t.integer  "level",                  :default => 0
+    t.integer  "exercise_score",         :default => 0
+    t.integer  "diet_score",             :default => 0
     t.text     "bio"
     t.string   "type"
     t.datetime "created_at",                             :null => false

@@ -11,7 +11,10 @@ Fitkids::Application.routes.draw do
   resources :child_guardian_relationships
 
 
-  resources :users
+  resources :users do
+    get :child_profile, on: :collection
+    get :watcher_profile, on: :collection
+  end
 
 
   resources :daily_regimen
@@ -24,9 +27,6 @@ Fitkids::Application.routes.draw do
 
 
   resources :exercise_reps
-
-
-  resources :leaderboard_spots
 
 
   resources :articles
@@ -44,7 +44,25 @@ Fitkids::Application.routes.draw do
   resources :daily_diets
 
 
-  resources :leaderboards
+  #ME
+
+  resources :leaderboards do
+    get :index_children, on: :collection
+  end
+
+
+  post '/users/increment_carbs'
+  post '/users/increment_fruit'
+  post '/users/increment_prot'
+  post '/users/increment_sweets'
+  post '/users/increment_veggies'
+  post '/users/increment_water'
+  post '/users/get_daily_diet'
+
+
+
+
+
 
 
   # The priority is based upon order of creation:
@@ -100,18 +118,24 @@ Fitkids::Application.routes.draw do
 
 	#Do we need these?
 	#match 'users/child_profile' => 'users#child_profile'
-	#match 'users/watcher_profile' => 'users#watcher_profile'
-  #ridgway had me drop the .html.erb
-	resources :users do
-    member do
-      get 'child_profile'
-    end
-  end
-  resources :users do
-    member do
-      get 'watcher_profile'
-    end
-  end
+  #match 'users/watcher_profile' => 'users#watcher_profile'
+	
+
+  #resources :users do
+  #  member do
+  #    get 'child_profile'
+  #  end
+  #end
+  #resources :users do
+  #  member do
+  #    get 'watcher_profile'
+  #  end
+  #end
+  #resources :users do
+  #  member do
+  #    get 'getNewDailyDiet'
+  #  end
+  #end
 
 
   # See how all your routes lay out with "rake routes"

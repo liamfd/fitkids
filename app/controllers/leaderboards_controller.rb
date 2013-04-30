@@ -3,6 +3,16 @@ class LeaderboardsController < ApplicationController
   # GET /leaderboards.json
   def index
     @leaderboards = Leaderboard.all
+    @users = User.where(:type => "Child").order(:level)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @leaderboards }
+    end
+  end
+
+  def index_children
+    @users = User.where(:type => "Child").order(:level)
 
     respond_to do |format|
       format.html # index.html.erb

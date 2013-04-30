@@ -1,0 +1,20 @@
+<h1>Welcome to the Leaderboards!</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Level</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.level %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

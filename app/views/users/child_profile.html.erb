@@ -1,4 +1,5 @@
 <h2>Child Profile!</h2>
+<h2>Welcome, <%=current_user.name %>, <%=current_user.id %> </h2>
 
 <%= image_tag('avatarEx.png') %>
 <br/>
@@ -7,7 +8,7 @@
 <h3> Main progress </h3>
 <div class="majorProgBar">
 		<div class="innerBar"></div>
-</div>
+</div> 
  <br/>
  
 <div id="diet_spot">
@@ -16,39 +17,53 @@
 		 
 	 <h4>Water:</h4>
 	<div class="minorProgBar">
-		<div class="innerBar"></div>
+		<div class="innerBar" style="width:<%= @curr_water %>%"></div>
 	</div>
+	<p>Water_drank = <%= @curr_diet.water_drank %> </p>
+	<p>water_serv = <%= @curr_diet.diet_plan.water_serv %> </p>
+	<p>Division = <%=  @curr_diet.water_drank.to_f/@curr_diet.diet_plan.water_serv.to_f %> </p>
+	<%= button_to "+Water", :action => 'increment_water', :id=>current_user %>
 	
 	 <h4>Veggies:</h4>
 	<div class="minorProgBar">
-		<div class="innerBar"></div>
+		<div class="innerBar" style="width:<%= @curr_veggies %>%"></div>
 	</div>
+	<%= button_to "+Veggies", :action => 'increment_veggies', :id=>current_user %>
+
 	 
 	 <h4>Carbs:</h4>
 	<div class="minorProgBar">
-		<div class="innerBar" ></div>
+		<div class="innerBar" style="width:<%= @curr_carbs %>%"></div>
 	</div>
-	<%= button_to "+Carbs", :method => 'incrementCarbs' %>
+	<p>Carbs_eaten = <%= @curr_diet.carbs_eaten %> </p>
+	<p>Carbs_serv = <%= @curr_diet.diet_plan.carbs_serv %> </p>
+	<p>Division = <%=  @curr_diet.carbs_eaten.to_f/@curr_diet.diet_plan.carbs_serv.to_f %> </p>
+	<%= button_to "+Carbs", :action => 'increment_carbs', :id=>current_user %>
 	 
 	 <h4>Protein:</h4>
 	<div class="minorProgBar">
-		<div class="innerBar"></div>
+		<div class="innerBar" style="width:<%= @curr_prot %>%"></div>
 	</div>
+	<%= button_to "+Protein", :action => 'increment_prot', :id=>current_user %>
 	 
 	 <h4>Fruits:</h4>
 	<div class="minorProgBar">
-		<div class="innerBar"></div>
+		<div class="innerBar" style="width:<%= @curr_fruit %>%"></div>
 	</div>
-	 
-	 <h4>Dairy:</h4>
-	<div class="minorProgBar">
-		<div class="innerBar"></div>
-	</div>
+	<%= button_to "+Fruits", :action => 'increment_fruit', :id=>current_user %>
+	<p>Fruit_eaten = <%= @curr_diet.fruit_eaten %> </p>
+	<p>Fruit_serv = <%= @curr_diet.diet_plan.fruit_serv %> </p>
+	<p>Division = <%=  @curr_diet.fruit_eaten.to_f/@curr_diet.diet_plan.fruit_serv.to_f %> </p>
 	 
 	 <h4>Sweets:</h4>
 	<div class="minorProgBar">
-		<div class="innerBar"></div>
+		<div class="innerBar" style="width:<%= @curr_sweets %>%"></div>
 	</div>
+	<%= button_to "+Sweets", :action => 'increment_sweets', :id=>current_user %>
+
+	<%= button_to "newDiet", :action => 'get_daily_diet', :id=>current_user %>
+
+	
 	 
 </div>
 
