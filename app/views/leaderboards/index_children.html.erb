@@ -2,15 +2,16 @@
 
 <table>
   <tr>
+    <th>Avatar</th>
     <th>Name</th>
     <th>Level</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @users.each do |user| %>
   <tr>
+    <td><%= image_tag('avatarEx.png', size:"75x50") %></td>
     <td><%= user.name %></td>
     <td><%= user.level %></td>
   </tr>

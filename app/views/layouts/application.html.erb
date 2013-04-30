@@ -13,10 +13,12 @@
 		<header>
 			<h1><%= link_to "Fitkids", "/"%></h1>
 			<nav>
-				<% if child_signed_in? %>
-					<%=  link_to "Profile", child_profile_users_path(:id => current_user.id)%> 
+				<% if user_signed_in? %>
+					<% if current_user.type == "Child" %>
+						<%=  link_to "Profile", child_profile_users_path(:id => current_user.id)%> 
+					<% end %>
 				<% end %>
-				<%= link_to "Leaderboard", "/"%>
+				<%=  link_to "Leaderboards", index_children_leaderboards_path %> 
 				<%= link_to "About", "/"%>
 				<%= link_to "Contact", "/"%>
 			</nav>
@@ -24,9 +26,10 @@
 	</div>
 	<div id="main">
 		<div id="hmenu">
-		<% if child_signed_in? %>
+		<% if user_signed_in? %>
 			<div>
-			You're a kid!
+			You're signed in!
+			Current user type is <%= current_user.type %>
 			<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
 			</div>
 		<% elsif watcher_signed_in? %>

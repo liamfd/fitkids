@@ -95,6 +95,9 @@ class UsersController < ApplicationController
 
   def child_profile
     @user = User.find(params[:id])
+    @made_new = false
+    #@user.daily_diet_maker
+
     @curr_diet = @user.daily_diets.order('created_at DESC').first
     @curr_water = @curr_diet.water_drank.to_f/@curr_diet.diet_plan.water_serv.to_f*100
     @curr_veggies = @curr_diet.veggie_eaten.to_f/@curr_diet.diet_plan.veggie_serv.to_f*100
@@ -103,9 +106,44 @@ class UsersController < ApplicationController
     @curr_fruit = @curr_diet.fruit_eaten.to_f/@curr_diet.diet_plan.fruit_serv.to_f*100
     @curr_sweets = @curr_diet.sweets_eaten.to_f/@curr_diet.diet_plan.sweets_serv.to_f*100
 
+    @curr_progress = @user.calc_food_score(1, 0)
     respond_to do |format|
       format.html # child_profile.html.erb
       format.json { render json: @user }
+    end
+  end
+
+    def get_daily_diet
+  #  @user = User.find(params[:id])
+  #  if @user.daily_diet_maker
+  #    @made_new = true
+  #  else
+  #    @made_new = false
+  #  end
+
+    @user = User.find(params[:id])
+    @user.daily_diet_maker
+    #@user.daily_diets.build({diet_plan: DietPlan.find(2)})
+    @curr_diet = @user.daily_diets.order('created_at DESC').first
+    @curr_diet.save
+    #bull
+    @curr_water = @curr_diet.water_drank.to_f/@curr_diet.diet_plan.water_serv.to_f*100
+    @curr_veggies = @curr_diet.veggie_eaten.to_f/@curr_diet.diet_plan.veggie_serv.to_f*100
+    @curr_carbs = @curr_diet.carbs_eaten.to_f/@curr_diet.diet_plan.carbs_serv.to_f*100 
+    @curr_prot = @curr_diet.prot_eaten.to_f/@curr_diet.diet_plan.prot_serv.to_f*100
+    @curr_fruit = @curr_diet.fruit_eaten.to_f/@curr_diet.diet_plan.fruit_serv.to_f*100
+    @curr_sweets = @curr_diet.sweets_eaten.to_f/@curr_diet.diet_plan.sweets_serv.to_f*100
+
+    @user.save
+
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.html { render action: "child_profile", notice: 'Carbs were successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -113,8 +151,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @curr_diet = @user.daily_diets.order('created_at DESC').first
     @curr_diet.water_drank = @curr_diet.water_drank+1
-    @curr_water = @curr_diet.water_drank.to_f/@curr_diet.diet_plan.water_serv.to_f*100 
+    #@curr_water = @curr_diet.water_drank.to_f/@curr_diet.diet_plan.water_serv.to_f*100 
+    @curr_water = @curr_diet.water_drank.to_f/@curr_diet.diet_plan.water_serv.to_f*100
+    @curr_veggies = @curr_diet.veggie_eaten.to_f/@curr_diet.diet_plan.veggie_serv.to_f*100
+    @curr_carbs = @curr_diet.carbs_eaten.to_f/@curr_diet.diet_plan.carbs_serv.to_f*100 
+    @curr_prot = @curr_diet.prot_eaten.to_f/@curr_diet.diet_plan.prot_serv.to_f*100
+    @curr_fruit = @curr_diet.fruit_eaten.to_f/@curr_diet.diet_plan.fruit_serv.to_f*100
+    @curr_sweets = @curr_diet.sweets_eaten.to_f/@curr_diet.diet_plan.sweets_serv.to_f*100
     @curr_diet.save
+
+    @curr_progress = @user.calc_food_score(@curr_diet.water_drank, @curr_diet.diet_plan.water_serv)
+    @user.save
   
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -131,8 +178,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @curr_diet = @user.daily_diets.order('created_at DESC').first
     @curr_diet.veggie_eaten = @curr_diet.veggie_eaten+1
+    #@curr_veggies = @curr_diet.veggie_eaten.to_f/@curr_diet.diet_plan.veggie_serv.to_f*100
+    @curr_water = @curr_diet.water_drank.to_f/@curr_diet.diet_plan.water_serv.to_f*100
     @curr_veggies = @curr_diet.veggie_eaten.to_f/@curr_diet.diet_plan.veggie_serv.to_f*100
+    @curr_carbs = @curr_diet.carbs_eaten.to_f/@curr_diet.diet_plan.carbs_serv.to_f*100 
+    @curr_prot = @curr_diet.prot_eaten.to_f/@curr_diet.diet_plan.prot_serv.to_f*100
+    @curr_fruit = @curr_diet.fruit_eaten.to_f/@curr_diet.diet_plan.fruit_serv.to_f*100
+    @curr_sweets = @curr_diet.sweets_eaten.to_f/@curr_diet.diet_plan.sweets_serv.to_f*100
     @curr_diet.save
+
+    @curr_progress = @user.calc_food_score(@curr_diet.veggie_eaten, @curr_diet.diet_plan.veggie_serv)
+    @user.save
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -149,10 +205,18 @@ class UsersController < ApplicationController
   def increment_carbs
     @user = User.find(params[:id])
     @curr_diet = @user.daily_diets.order('created_at DESC').first
-    @prev_carbs = @curr_diet.carbs_eaten
-    @curr_diet.carbs_eaten = @prev_carbs+1
-    @curr_carbs = @curr_diet.carbs_eaten.to_f/@curr_diet.diet_plan.carbs_serv.to_f*100
+    @curr_diet.carbs_eaten = @curr_diet.carbs_eaten+1
+    #@curr_carbs = @curr_diet.carbs_eaten.to_f/@curr_diet.diet_plan.carbs_serv.to_f*100
+    @curr_water = @curr_diet.water_drank.to_f/@curr_diet.diet_plan.water_serv.to_f*100
+    @curr_veggies = @curr_diet.veggie_eaten.to_f/@curr_diet.diet_plan.veggie_serv.to_f*100
+    @curr_carbs = @curr_diet.carbs_eaten.to_f/@curr_diet.diet_plan.carbs_serv.to_f*100 
+    @curr_prot = @curr_diet.prot_eaten.to_f/@curr_diet.diet_plan.prot_serv.to_f*100
+    @curr_fruit = @curr_diet.fruit_eaten.to_f/@curr_diet.diet_plan.fruit_serv.to_f*100
+    @curr_sweets = @curr_diet.sweets_eaten.to_f/@curr_diet.diet_plan.sweets_serv.to_f*100
     @curr_diet.save
+
+    @curr_progress = @user.calc_food_score(@curr_diet.carbs_eaten, @curr_diet.diet_plan.carbs_serv)
+    @user.save
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -169,8 +233,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @curr_diet = @user.daily_diets.order('created_at DESC').first
     @curr_diet.prot_eaten = @curr_diet.prot_eaten+1
+    @curr_water = @curr_diet.water_drank.to_f/@curr_diet.diet_plan.water_serv.to_f*100
+    @curr_veggies = @curr_diet.veggie_eaten.to_f/@curr_diet.diet_plan.veggie_serv.to_f*100
+    @curr_carbs = @curr_diet.carbs_eaten.to_f/@curr_diet.diet_plan.carbs_serv.to_f*100 
     @curr_prot = @curr_diet.prot_eaten.to_f/@curr_diet.diet_plan.prot_serv.to_f*100
+    @curr_fruit = @curr_diet.fruit_eaten.to_f/@curr_diet.diet_plan.fruit_serv.to_f*100
+    @curr_sweets = @curr_diet.sweets_eaten.to_f/@curr_diet.diet_plan.sweets_serv.to_f*100
+   #@curr_prot = @curr_diet.prot_eaten.to_f/@curr_diet.diet_plan.prot_serv.to_f*100
     @curr_diet.save
+
+    @curr_progress = @user.calc_food_score(@curr_diet.prot_eaten, @curr_diet.diet_plan.prot_serv)
+    @user.save
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -187,8 +260,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @curr_diet = @user.daily_diets.order('created_at DESC').first
     @curr_diet.fruit_eaten = @curr_diet.fruit_eaten+1
+    #@curr_fruit = @curr_diet.fruit_eaten.to_f/@curr_diet.diet_plan.fruit_serv.to_f*100
+    @curr_water = @curr_diet.water_drank.to_f/@curr_diet.diet_plan.water_serv.to_f*100
+    @curr_veggies = @curr_diet.veggie_eaten.to_f/@curr_diet.diet_plan.veggie_serv.to_f*100
+    @curr_carbs = @curr_diet.carbs_eaten.to_f/@curr_diet.diet_plan.carbs_serv.to_f*100 
+    @curr_prot = @curr_diet.prot_eaten.to_f/@curr_diet.diet_plan.prot_serv.to_f*100
     @curr_fruit = @curr_diet.fruit_eaten.to_f/@curr_diet.diet_plan.fruit_serv.to_f*100
+    @curr_sweets = @curr_diet.sweets_eaten.to_f/@curr_diet.diet_plan.sweets_serv.to_f*100
     @curr_diet.save
+
+    @curr_progress = @user.calc_food_score(@curr_diet.fruit_eaten, @curr_diet.diet_plan.fruit_serv)
+    @user.save
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -205,8 +287,18 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @curr_diet = @user.daily_diets.order('created_at DESC').first
     @curr_diet.sweets_eaten = @curr_diet.sweets_eaten+1
+    #@curr_sweets = @curr_diet.sweets_eaten.to_f/@curr_diet.diet_plan.sweets_serv.to_f*100
+    @curr_water = @curr_diet.water_drank.to_f/@curr_diet.diet_plan.water_serv.to_f*100
+    @curr_veggies = @curr_diet.veggie_eaten.to_f/@curr_diet.diet_plan.veggie_serv.to_f*100
+    @curr_carbs = @curr_diet.carbs_eaten.to_f/@curr_diet.diet_plan.carbs_serv.to_f*100 
+    @curr_prot = @curr_diet.prot_eaten.to_f/@curr_diet.diet_plan.prot_serv.to_f*100
+    @curr_fruit = @curr_diet.fruit_eaten.to_f/@curr_diet.diet_plan.fruit_serv.to_f*100
     @curr_sweets = @curr_diet.sweets_eaten.to_f/@curr_diet.diet_plan.sweets_serv.to_f*100
+
     @curr_diet.save
+
+    @curr_progress = @user.calc_food_score(@curr_diet.sweets_eaten, @curr_diet.diet_plan.sweets_serv)
+    @user.save
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -218,22 +310,4 @@ class UsersController < ApplicationController
       end
     end
   end
-
-  def get_daily_diet
-    @user = User.find(params[:id])
-    @user.daily_diets.build({diet_plan: DietPlan.find(2)})
-    @curr_diet = @user.daily_diets.order('created_at DESC').first
-    @user.save
-
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { render action: "child_profile", notice: 'Carbs were successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
 end

@@ -18,14 +18,47 @@ class Child < User
   #def get_current_diet(curr_user)
   #  @daily_diet = DailyDiet.new(curr_user)
   #end
-  
-
-  def inc_carbs()
-  	@daily_diet.carbs_eaten += 1
+  def after_initialize
+    self.daily_diet = self.daily_diets.build({"diet_plan" => DietPlan.find(2)})
   end
+
 
   def self.model_name
     User.model_name
+  end
+
+  def daily_diet_bonus(current_diet)
+    #what this should do is check carbs, fruits, etc against the serv, then if they're all >= give a bonus. Only once! so maybe have it flip a flag
+  end
+
+  def daily_diet_maker()
+    @curr_diet = self.daily_diets.order('created_at DESC').first
+    if @curr_diet.day_made != Date.today
+      self.daily_diets.build({"diet_plan" => DietPlan.find(2)})
+      return true
+    else
+      return false
+    end
+    #is it stands this just makes a new one every time you hit profile
+  end
+
+  def calc_food_score(food_eaten, food_serv)
+   # @curr_diet = self.daily_diets.order('created_at DESC').first
+    @level_up_threshold = 20
+    @food_score = 0
+    if food_eaten <= food_serv
+      @food_score = 1
+    end
+    self.points = self.points + @food_score
+    level_up(@level_up_threshold)
+    return 100*points.to_f/@level_up_threshold.to_f
+  end
+
+  def level_up(level_up_threshold)
+    if self.points >= level_up_threshold
+      self.level += 1
+      self.points = self.points-@level_up_threshold
+    end
   end
 
 end

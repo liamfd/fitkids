@@ -14,6 +14,9 @@ Fitkids::Application.routes.draw do
   resources :users do
     get :child_profile, on: :collection
     get :watcher_profile, on: :collection
+    resources :daily_diets do
+      resources :diet_plans
+    end
   end
 
 
