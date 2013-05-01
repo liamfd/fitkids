@@ -15,7 +15,12 @@
  
 <div id="diet_spot">
 	<h3>Diet!</h3>
-	</br>
+	<h4>Diet Progress:</h4>
+	<div class="minorProgBar">
+		<div class="innerBar" style="width:<%= @curr_diet_progress %>%"></div>
+	</div>
+	<p><%= @curr_diet.daily_progress%> / <%= @fake_diet_plan%> </p>
+	<br/>
 		 
 	 <h4>Water:</h4>
 	<div class="minorProgBar">

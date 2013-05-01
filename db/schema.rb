@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130430140851) do
+ActiveRecord::Schema.define(:version => 20130501155507) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -106,6 +106,8 @@ ActiveRecord::Schema.define(:version => 20130430140851) do
     t.integer  "water_drank",    :default => 0
     t.integer  "sweets_eaten",   :default => 0
     t.date     "day_made"
+    t.boolean  "got_bonus"
+    t.integer  "daily_progress", :default => 0
   end
 
   add_index "daily_diets", ["child_id"], :name => "index_daily_diets_on_child_id"

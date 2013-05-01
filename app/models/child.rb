@@ -18,7 +18,7 @@ class Child < User
   #def get_current_diet(curr_user)
   #  @daily_diet = DailyDiet.new(curr_user)
   #end
-  def after_initialize
+  def before_create
     self.daily_diet = self.daily_diets.build({"diet_plan" => DietPlan.find(2)})
   end
 
@@ -42,22 +42,20 @@ class Child < User
     #is it stands this just makes a new one every time you hit profile
   end
 
-  def calc_food_score(food_eaten, food_serv)
-   # @curr_diet = self.daily_diets.order('created_at DESC').first
+  def calc_food_score(food_type)
+    @curr_diet = self.daily_diets.order('created_at DESC').first
     @level_up_threshold = 20
-    @food_score = 0
-    if food_eaten <= food_serv
-      @food_score = 1
-    end
-    self.points = self.points + @food_score
+
+    @food_score = @curr_diet.calc_servings(food_type)
+    self.points += @food_score
     level_up(@level_up_threshold)
-    return 100*points.to_f/@level_up_threshold.to_f
+    return 100*self.points.to_f/@level_up_threshold.to_f
   end
 
   def level_up(level_up_threshold)
     if self.points >= level_up_threshold
       self.level += 1
-      self.points = self.points-@level_up_threshold
+      self.points -= @level_up_threshold
     end
   end
 
