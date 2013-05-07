@@ -5,7 +5,7 @@
     <th>Relation</th>
     <th>Bonus</th>
     <th>Child</th>
-    <th>Guardian</th>
+    <th>Watcher</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,8 +15,12 @@
   <tr>
     <td><%= child_guardian_relationship.relation %></td>
     <td><%= child_guardian_relationship.bonus %></td>
-    <td><%= child_guardian_relationship.child %></td>
-    <td><%= child_guardian_relationship.guardian %></td>
+    <td><%= child_guardian_relationship.child.name %></td>
+    <td><%= if child_guardian_relationship.watcher != nil 
+              child_guardian_relationship.watcher.name
+            else
+              "not found"
+            end%></td>
     <td><%= link_to 'Show', child_guardian_relationship %></td>
     <td><%= link_to 'Edit', edit_child_guardian_relationship_path(child_guardian_relationship) %></td>
     <td><%= link_to 'Destroy', child_guardian_relationship, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -8,12 +8,14 @@ Fitkids::Application.routes.draw do
 
   devise_for :users
 
-  resources :child_guardian_relationships
-
+  resources :child_guardian_relationships do
+    resources :users
+  end
 
   resources :users do
     get :child_profile, on: :collection
     get :watcher_profile, on: :collection
+    #resources :child_guardian_relationships
     resources :daily_diets do
       resources :diet_plans
     end

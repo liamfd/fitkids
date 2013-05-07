@@ -1,0 +1,7 @@
+<% if user_signed_in? %>
+	<% if current_user.type == "Child" %>
+		<%= link_to "My Profile", child_profile_users_path(:id => current_user.id)%>
+	<% elsif current_user.type == "Watcher"%>
+		<%= link_to "My Profile", watcher_profile_users_path(:id => current_user.id)%> 
+	<% end %>
+<% end %>

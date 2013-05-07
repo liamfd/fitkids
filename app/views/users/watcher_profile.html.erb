@@ -1,3 +1,10 @@
-<h1>Kid Profile!</h1>
-<p> Welcome to the monitor profile, where the name's made up and the Joints! don't matter! </p>
+<h1>Monitor Profile!</h1>
+<p> Welcome to the monitor profile, where the name's made up.
+	<p> This is the profile for <%=@user.name%></p>
+	<br/>
+	<p> Create a new Article! </p>
+	<%= link_to "new article", new_article_path(:watcher_id => @user.id) %>
+	<p> Create a new relation with child! </p>
+	<%= link_to "new monitoring",  new_child_guardian_relationship_path(:watcher_id => @user.id) %>
+
 <br/>

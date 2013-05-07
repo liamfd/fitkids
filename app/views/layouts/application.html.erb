@@ -13,11 +13,7 @@
 		<header>
 			<h1><%= link_to "Fitkids", "/"%></h1>
 			<nav>
-				<% if user_signed_in? %>
-					<% if current_user.type == "Child" %>
-						<%=  link_to "Profile", child_profile_users_path(:id => current_user.id)%> 
-					<% end %>
-				<% end %>
+				<%= render "layouts/choose_profile" %>
 				<%=  link_to "Leaderboards", index_children_leaderboards_path %> 
 				<%= link_to "About", "/"%>
 				<%= link_to "Contact", "/"%>

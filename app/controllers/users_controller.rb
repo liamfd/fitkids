@@ -24,18 +24,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1
-  # GET /users/1.json
-  def watcher_profile
-    @user = User.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
-    end
-  end
-
-
   # GET /users/new
   # GET /users/new.json
   def new
@@ -96,6 +84,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def watcher_profile
+    #@user = User.find(params[:user_id])
+    @user = current_user
+    #@children_watched = @user.child_guardian_relationships
+    @all_articles = @user.articles
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @users }
+    end
+
+
+  end
+
   def child_profile
     #This will need to change in order to have others view someone's profile
     @user = current_user
@@ -148,7 +150,6 @@ class UsersController < ApplicationController
     @user.calc_food_score("water")
     #@curr_diet = @user.daily_diets.order('created_at DESC').first
     #@curr_diet.save done in model now
-
 
     respond_to do |format|
       if @user.save

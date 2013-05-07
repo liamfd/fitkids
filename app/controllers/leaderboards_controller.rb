@@ -1,6 +1,9 @@
 class LeaderboardsController < ApplicationController
   # GET /leaderboards
   # GET /leaderboards.json
+
+  helper_method :sort_column, :sort_direction
+  
   def index
     @leaderboards = Leaderboard.all
     @users = User.where(:type => "Child").order(:level)
@@ -12,8 +15,8 @@ class LeaderboardsController < ApplicationController
   end
 
   def index_children
-    @users = User.where(:type => "Child").order(:level)
-
+    #@users = User.where(:type => "Child").order(:level)
+    @users = User.order(sort_column + " " + sort_direction)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @leaderboards }
@@ -89,5 +92,16 @@ class LeaderboardsController < ApplicationController
       format.html { redirect_to leaderboards_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def sort_column
+    User.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    params[:sort] || "name"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end

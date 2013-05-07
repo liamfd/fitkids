@@ -25,6 +25,7 @@ class ArticlesController < ApplicationController
   # GET /articles/new.json
   def new
     @article = Article.new
+    @article.watcher = params[:watcher_id]
 
     respond_to do |format|
       format.html # new.html.erb

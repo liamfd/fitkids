@@ -12,7 +12,6 @@ class DailyDiet < ActiveRecord::Base
   	def before_create
     	self.day_made ||= Date.today if new_record?
     	self.got_bonus = false
-    	self.daily_progress = 0
   	end
 
   	def get_daily_bonus

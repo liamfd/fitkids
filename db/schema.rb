@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130501155507) do
+ActiveRecord::Schema.define(:version => 20130507154346) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -35,8 +35,10 @@ ActiveRecord::Schema.define(:version => 20130501155507) do
     t.string   "name"
     t.string   "topic"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "watcher"
+    t.string   "article_source", :limit => nil
   end
 
   create_table "avatars", :force => true do |t|
@@ -54,13 +56,12 @@ ActiveRecord::Schema.define(:version => 20130501155507) do
     t.string   "relation"
     t.float    "bonus"
     t.integer  "child_id"
-    t.integer  "guardian_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "watcher_id"
   end
 
   add_index "child_guardian_relationships", ["child_id"], :name => "index_child_guardian_relationships_on_child_id"
-  add_index "child_guardian_relationships", ["guardian_id"], :name => "index_child_guardian_relationships_on_guardian_id"
 
   create_table "children", :force => true do |t|
     t.string   "name"

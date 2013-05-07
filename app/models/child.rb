@@ -10,7 +10,7 @@ class Child < User
 	has_one :avatar, inverse_of: :child
   has_many :daily_diets, inverse_of: :child
   has_many :dailyregimens, inverse_of: :child
-  has_many :monitor_child_relationships, inverse_of: :child
+  has_many :child_guardian_relationships, inverse_of: :child
   belongs_to :leaderboard, inverse_of: :children
 
   accepts_nested_attributes_for :daily_diets

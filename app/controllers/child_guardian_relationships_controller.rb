@@ -25,6 +25,21 @@ class ChildGuardianRelationshipsController < ApplicationController
   # GET /child_guardian_relationships/new.json
   def new
     @child_guardian_relationship = ChildGuardianRelationship.new
+    @children = User.where(:type => "Child").order(:name)
+
+    if(params.has_key?(:watcher_id))
+      @this_watcher_id = params[:watcher_id]
+    else
+      @this_watcher_id = 0
+    end
+
+    @child_guardian_relationship.watcher_id = @this_watcher_id
+
+    @watchers = User.where(:type => "Watcher").order(:name)
+   # @selected_child = params[child][id]
+   # @selected_watcher = params[watcher][id]
+   # @child_guardian_relationship.set_child(@selected_child)
+   # @child_guardian_relationship.set_watcher(@selected_watcher)
 
     respond_to do |format|
       format.html # new.html.erb

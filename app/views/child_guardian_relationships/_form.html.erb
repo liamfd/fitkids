@@ -11,6 +11,13 @@
     </div>
   <% end %>
 
+  <div>
+   <p>You are: 
+    <%=@watchers.find_by_id(@this_watcher_id).name%></p>
+
+    <%# f.collection_select( :watcher_id, @watchers, :id, :name, :prompt => true) %>
+  </div>
+
   <div class="field">
     <%= f.label :relation %><br />
     <%= f.text_field :relation %>
@@ -21,11 +28,10 @@
   </div>
   <div class="field">
     <%= f.label :child %><br />
-    <%= f.text_field :child %>
+    <%= f.collection_select :child_id, @children, :id, :name, :prompt => true %>
   </div>
   <div class="field">
-    <%= f.label :guardian %><br />
-    <%= f.text_field :guardian %>
+    <%= f.hidden_field :watcher_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

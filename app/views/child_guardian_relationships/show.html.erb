@@ -12,14 +12,14 @@
 
 <p>
   <b>Child:</b>
-  <%= @child_guardian_relationship.child %>
+  <%= @child_guardian_relationship.child.name %>
 </p>
 
 <p>
-  <b>Guardian:</b>
-  <%= @child_guardian_relationship.guardian %>
+  <b>Watcher:</b>
+  <%= @child_guardian_relationship.watcher.name %>
 </p>
 
 
 <%= link_to 'Edit', edit_child_guardian_relationship_path(@child_guardian_relationship) %> |
-<%= link_to 'Back', child_guardian_relationships_path %>
+<%= render "back_to_profile" %>

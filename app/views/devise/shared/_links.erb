@@ -3,7 +3,8 @@
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_child_registration_path(resource_name) %><br />
+  <%= link_to "Sign up as child", new_child_registration_path %><br />
+  <%= link_to "Sign up as watcher", new_watcher_registration_path %><br />
 <% end -%>
 
 
