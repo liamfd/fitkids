@@ -1,4 +1,5 @@
-<h1>Welcome to the Leaderboards!</h1>
+<h2>Welcome to the Leaderboards!</h2>
+<br/>
 
 <table>
   <tr>
@@ -13,14 +14,13 @@
   </tr>
 
 <% @users.each do |user| %>
-  <tr>
-    <td><%= image_tag(user.avatar.image_name, size:"75x50") %></td>
-    <td><%= user.name %></td>
-    <td><%= user.level %></td>
-    <td><%= user.points %></td>
-    <td><%= user.food_score %></td>
-    <td><%= user.exercise_done %></td>
-
+  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+    <td><div><%= image_tag(user.avatar.image_name, size:"75x50") %></div></td>
+    <td><div><%= user.name %></div></td>
+    <td><div><%= user.level %></div></td>
+    <td><div><%= user.points %></div></td>
+    <td><div><%= user.food_score %></div></td>
+    <td><div><%= user.exercise_done %></div></td>
   </tr>
 <% end %>
 </table>

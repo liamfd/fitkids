@@ -98,7 +98,7 @@ class UsersController < ApplicationController
     @articles = Article.all
     @children_relations = @user.child_guardian_relationships.all
     @children = @user.children.all
-    #@fake_diet_plan = 15
+    #@full_diet_plan = 15
 
     respond_to do |format|
       format.html # index.html.erb
@@ -112,18 +112,19 @@ class UsersController < ApplicationController
     #This will need to change in order to have others view someone's profile
     @user = current_user
     #@user.daily_diet_maker
-    @fake_diet_plan = 15
 		#if !@user.daily_diets.all
 		#	@user.daily_diet = daily_diets.create({"diet_plan" => DietPlan.find(2)})
 		#end
     @curr_diet = @user.daily_diets.order('created_at DESC').first
+    @full_diet_plan = @curr_diet.diet_plan.get_total
+
     @curr_water = @curr_diet.water_drank.to_f/@curr_diet.diet_plan.water_serv.to_f*100
     @curr_veggies = @curr_diet.veggie_eaten.to_f/@curr_diet.diet_plan.veggie_serv.to_f*100
     @curr_carbs = @curr_diet.carbs_eaten.to_f/@curr_diet.diet_plan.carbs_serv.to_f*100 
     @curr_prot = @curr_diet.prot_eaten.to_f/@curr_diet.diet_plan.prot_serv.to_f*100
     @curr_fruit = @curr_diet.fruit_eaten.to_f/@curr_diet.diet_plan.fruit_serv.to_f*100
     @curr_sweets = @curr_diet.sweets_eaten.to_f/@curr_diet.diet_plan.sweets_serv.to_f*100
-    @curr_diet_progress = @curr_diet.daily_progress.to_f/@fake_diet_plan * 100
+    @curr_diet_progress = @curr_diet.daily_progress.to_f/@full_diet_plan * 100
     @curr_exercise_progress = @user.exercise_done.to_f/@user.exercise_goal * 100
     #make a method to add up attributes in diet_plan
 

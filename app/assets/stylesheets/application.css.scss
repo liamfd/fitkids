@@ -65,9 +65,11 @@ p, a, span, div{
 	font-family: 'Oswald', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6{
+h1, h2, h3, h4, h5, h6, th{
 	font-family: 'Lobster', cursive;
 }
+
+/* HOME */
 
 div #home_image
 {
@@ -88,10 +90,11 @@ div #home_overlay
 	position:relative;
 	top:50%;
 	left:50%;
-	margin-top:$overlay_height/-2px;
+	margin-top:overlay_height/-2px;
 	margin-left:-300px;
+	border-radius:8px;
 
-	background-color:rgba(0,0,0,.7);
+	background-color:rgba(0,0,0,.5);
 	h1{
 		font-size:65px;
 		color:$headerBackground;
@@ -106,7 +109,7 @@ div #home_overlay
 		margin-top:-10px;
 		a {
 			font-family:inherit;
-			color:#bC3C9B;
+			color:#cC4CaB;
 			text-decoration:none;
 		}
 	}
@@ -279,10 +282,12 @@ h4{
 
 #diet_spot{
 	@include spots;
+	clear:both;
 }
 
 #exercise_spot{
 	@include spots;
+	margin-left:50px;
 }
 
 th .current {
@@ -297,4 +302,72 @@ th .asc {
 
 th .desc {
   background-image: url(/images/down_arrow.gif);
+}
+
+/* LEADERBOARDS */
+
+tr .list_line_even{
+	background-color:#e0f8f8;
+	border:3px #000000;
+}
+
+tr .list_line_odd{
+	background-color:#f8b0f8;
+}
+
+$tableCellWidth:100px;
+
+th {
+	height:22px;
+	width:$tableCellWidth;
+	font-size:20px;
+	color:#CD5C5C;
+	a{	
+		font-family:inherit;
+		font-size:24px;
+		color:inherit;
+		text-decoration:none;
+	}
+}
+
+table td.articles {
+	height:20px;
+	width:$tableCellWidth;
+	border:1px solid #DDDDDD;
+	text-align:center;
+}
+
+table td.name_col, table td.name_col{
+	height:20px;
+	width:300px;
+	text-align:center;
+}
+
+div #main_wrapper{
+	padding-left:350px;
+}
+
+/* WATCHER PROFILE */
+@mixin watcher_areas{
+	float:left;
+	overflow:hidden;
+	padding:10px;
+	.minorProgBar{
+		margin:10px;
+	}	
+}
+
+#articles_area{
+	@include watcher_areas;
+	margin-left:50px;
+}
+
+#monitor_area{
+	@include watcher_areas;
+}
+
+table td.watcher_name_col, table td.watcher_name_col{
+	height:20px;
+	width:200px;
+	text-align:center;
 }

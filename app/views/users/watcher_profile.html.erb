@@ -1,19 +1,41 @@
-<h1>Monitor Profile!</h1>
-<p> Welcome to the monitor profile, where the name's made up.
-	<p> This is the profile for <%=@user.name%></p>
+<h2>Watcher Profile!</h2>
+	<h4> This is the profile for <%=@user.name%></h4>
 	<br/>
-	<div>
+	<div id = "monitor_area">
+		<h3 style="text-align:center;"> Children! </h3>
+		<div>
+			<% @children.each do |child| %>
+			    <% @curr_diet = child.daily_diets.order('created_at DESC').first %>
+				<% @curr_progress = child.points.to_f/15 * 100 %>
+				<% @curr_progress = child.points.to_f/15 * 100 %>
+				<% @curr_diet_progress = @curr_diet.carbs_eaten.to_f/@curr_diet.diet_plan.carbs_serv * 100 %>
+			    <h4><%= child.name %>, level <%= child.points %></h4>
+			    Overall:
+			    <div class="minorProgBar">
+					<div class="innerBar" style="width:<%= @curr_progress %>%">
+					</div>
+				</div> 
+			<% end %> 
+		</div>
+		<div>
+			<%= link_to "Monitor new child!",  new_child_guardian_relationship_path(:watcher_id => @user.id) %>
+		</div>
+	</div>
+
+	<div id="articles_area">
+		<h3 style="text-align:center;"> Articles! </h3>
+		<br/>
 		<table>
 			<tr>
-			    <th>Name</th>
+			    <th class="watcher_name_col">Name</th>
 			    <th>Topic</th>
 			    <th>Content</th>
-			    <th>Creator Name </th>
+			    <th>Creator</th>
 			  </tr>
 
 			<% @articles.each do |article| %>
 			  <tr>
-			    <td><%= article.name %></td>
+			    <td class="watcher_name_col"><%= article.name %></td>
 			    <td><%= article.topic %></td>
 			    <td><%= article.content %></td>
 			    <td><%=
@@ -27,26 +49,6 @@
 			<% end %>
 			</table>
 		<%= link_to "Create a new Article!", new_article_path(:watcher_id => @user.id) %>
-	</div>
-	<br/>
-	<div>
-		<div><% @children.each do |child| %>
-			    <%# @child = child %>
-			    <% @curr_diet = child.daily_diets.order('created_at DESC').first %>
-    			<% @curr_progress = child.points.to_f/15 * 100 %>
-    			<% @curr_progress = child.points.to_f/15 * 100 %>
-    			<% @curr_diet_progress = @curr_diet.carbs_eaten.to_f/@curr_diet.diet_plan.carbs_serv * 100 %>
-			    <p><%= child.name %></p>
-			    <%= child.points %></p>
-			    Overall:<div class="minorProgBar">
-				<div class="innerBar" style="width:<%= @curr_progress %>%"></div>
-		<% end %>
-		</div> 
-		</div>
-	</div>
-
-		<div>
-		<%= link_to "Monitor new child!",  new_child_guardian_relationship_path(:watcher_id => @user.id) %>
 	</div>
 
 <br/>

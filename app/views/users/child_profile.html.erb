@@ -1,21 +1,26 @@
-<h2>Welcome, <%=current_user.name %></h2>
+<h2>Child Profile!</h2>
+<h4> This is the profile for <%=@user.name%></h4>
+<br/>
 
+<div style="float:left;">
 <%= image_tag(@user.avatar.image_name, size:"300x225") %>
-<br/>
-<br/>
+</div>
 
-<h3> Main progress </h3>
-<div class="majorProgBar">
-		<div class="innerBar" style="width:<%= @curr_progress %>%"></div>
-</div> 
-	<h4>Points = <%= @user.points %> </h4>
+<div id="main_wrapper">
+	<h3>You are level <%=current_user.level %> </h3>
+	<br/> 
+	<h3> Main progress </h3>
+	<div class="majorProgBar">
+			<div class="innerBar" style="width:<%= @curr_progress %>%">
+			</div>
+	</div> 
+		<h4>Points = <%= @user.points %> </h4>
+</div>
  <br/>
-
-<h3>You are level <%=current_user.level %> </h3> 
- 
+ <br/>
 <div id="diet_spot">
 	<h3>Diet!</h3>
-	<h4>Daily Diet Progress: <%= @curr_diet.daily_progress%> / <%= @fake_diet_plan%></h4>
+	<h4>Daily Diet Progress: <%= @curr_diet.daily_progress%> / <%= @full_diet_plan%></h4>
 	<div class="mediumProgBar">
 		<div class="innerBar" style="width:<%= @curr_diet_progress %>%"></div>
 	</div>
@@ -84,11 +89,12 @@
 			<div class="innerBar" style="width:<%= @curr_exercise_progress%>%"></div>
 	</div>
 	<div>
+		<br/>
 		<h4>How many minutes did you play outside today?</h4>
 	    	<%= form_tag(:controller=>'users', :action=>'increment_exercise', :method=>"post") do %>
 		  		<%= number_field_tag :hours_exercised %>
 
-		  		<%= submit_tag 'Update Exercise' %>
+		  		<%= submit_tag '+' %>
 			<% end %>
 	</div>
 </div>
