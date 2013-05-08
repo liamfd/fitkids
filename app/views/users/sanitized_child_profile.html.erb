@@ -7,7 +7,7 @@
 </div>
 
 <div id="main_wrapper">
-	<h3>You are level <%=current_user.level %> </h3>
+	<h3>This child is level <%=current_user.level %> </h3>
 	<br/> 
 	<h3> Main progress </h3>
 	<div class="majorProgBar">
@@ -31,7 +31,6 @@
 		<div class="minorProgBar" style="float:left;">
 			<div class="innerBar" style="width:<%= @curr_water %>%"></div>
 		</div>
-		<%= button_to "+", :action => 'increment_water', :id=>current_user %>
 	</div>
 	
 	<div style="clear:both">
@@ -39,7 +38,6 @@
 		<div class="minorProgBar" style="float:left;">
 			<div class="innerBar" style="width:<%= @curr_veggies%>%"></div>
 		</div>
-		<%= button_to "+", :action => 'increment_veggies', :id=>current_user %>
 	</div>
 
 	<div style="clear:both">
@@ -47,7 +45,6 @@
 		<div class="minorProgBar" style="float:left;">
 			<div class="innerBar" style="width:<%= @curr_carbs%>%"></div>
 		</div>
-		<%= button_to "+", :action => 'increment_carbs', :id=>current_user %>
 	</div>
 
 	<div style="clear:both">
@@ -55,7 +52,6 @@
 		<div class="minorProgBar" style="float:left;">
 			<div class="innerBar" style="width:<%= @curr_prot%>%"></div>
 		</div>
-		<%= button_to "+", :action => 'increment_prot', :id=>current_user %>
 	</div>
 	 
 	<div style="clear:both">
@@ -63,7 +59,6 @@
 		<div class="minorProgBar" style="float:left;">
 			<div class="innerBar" style="width:<%= @curr_fruit%>%"></div>
 		</div>
-		<%= button_to "+", :action => 'increment_fruit', :id=>current_user %>
 	</div>
 
 	<div style="clear:both">
@@ -71,7 +66,6 @@
 		<div class="minorProgBar" style="float:left;">
 			<div class="innerBar" style="width:<%= @curr_sweets%>%"></div>
 		</div>
-		<%= button_to "+", :action => 'increment_sweets', :id=>current_user %>
 	</div>
 
 	<br/>
@@ -88,15 +82,7 @@
 	<div class="mediumProgBar">
 			<div class="innerBar" style="width:<%= @curr_exercise_progress%>%"></div>
 	</div>
-	<div>
-		<br/>
-		<h4>How many minutes did you play outside today?</h4>
-	    	<%= form_tag(:controller=>'users', :action=>'increment_exercise', :method=>"post") do %>
-		  		<%= number_field_tag :hours_exercised %>
-
-		  		<%= submit_tag '+' %>
-			<% end %>
-	</div>
 </div>
 	 
-<div style="clear:both;"></div>
+</div>
+	 

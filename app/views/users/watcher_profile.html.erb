@@ -7,11 +7,12 @@
 		<div>
 			<% @children.each do |child| %>
 			    <% @curr_diet = child.daily_diets.order('created_at DESC').first %>
-			    <% @level_up = 20 %>
+			    <% @level_up = child.level_threshold %>
 				<% @curr_progress = child.points.to_f/@level_up * 100 %>
 				<% @curr_diet_progress = @curr_diet.daily_progress.to_f/@curr_diet.diet_plan.get_total * 100 %>
 				<% @curr_exercise_progress = child.exercise_done.to_f/child.exercise_goal * 100 %>
-			    <h3 class="child_name"><%= child.name %>, level <%= child.points %></h3>
+
+			    <h3 class="child_name"> <%= child.name %>, level <%= child.level %></h3>
 			    Overall: <%=child.points %> / <%= @level_up%> points.
 			    <div class="minorProgBar">
 					<div class="innerBar" style="width:<%= @curr_progress %>%">
@@ -26,7 +27,8 @@
 				<div class="miniProgBar">
 					<div class="innerBar" style="width:<%= @curr_exercise_progress %>%">
 					</div>
-				</div> 
+				</div>
+				<h4> <%= link_to "Go to profile", :action => :sanitized_child_profile, :id => child.id %></h4>
 				<br/>
 			<% end %> 
 		</div>

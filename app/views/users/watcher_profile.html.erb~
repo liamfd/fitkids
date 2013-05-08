@@ -1,10 +1,68 @@
-<h1>Monitor Profile!</h1>
-<p> Welcome to the monitor profile, where the name's made up.
-	<p> This is the profile for <%=@user.name%></p>
+<h2>Watcher Profile!</h2>
+	<h4> This is the profile for <%=@user.name%></h4>
 	<br/>
-	<p> Create a new Article! </p>
-	<%= link_to "new article", new_article_path(:watcher_id => @user.id) %>
-	<p> Create a new relation with child! </p>
-	<%= link_to "new monitoring",  new_child_guardian_relationship_path(:watcher_id => @user.id) %>
+	<div id = "monitor_area">
+		<h2 style="text-align:center;"> Children! </h2>
+		<br/>
+		<div>
+			<% @children.each do |child| %>
+			    <% @curr_diet = child.daily_diets.order('created_at DESC').first %>
+			    <% @level_up = 20 %>
+				<% @curr_progress = child.points.to_f/@level_up * 100 %>
+				<% @curr_diet_progress = @curr_diet.daily_progress.to_f/@curr_diet.diet_plan.get_total * 100 %>
+				<% @curr_exercise_progress = child.exercise_done.to_f/child.exercise_goal * 100 %>
+			    <h3 class="child_name"><%= child.name %>, level <%= child.points %></h3>
+			    Overall: <%=child.points %> / <%= @level_up%> points.
+			    <div class="minorProgBar">
+					<div class="innerBar" style="width:<%= @curr_progress %>%">
+					</div>
+				</div> 
+				Diet: <%=@curr_diet.daily_progress%> / <%= @curr_diet.diet_plan.get_total%> daily balanced servings.
+				<div class="miniProgBar">
+					<div class="innerBar" style="width:<%= @curr_diet_progress %>%">
+					</div>
+				</div> 
+				Exercise: <%=child.exercise_done %> / <%= child.exercise_goal%> minutes of exercise.
+				<div class="miniProgBar">
+					<div class="innerBar" style="width:<%= @curr_exercise_progress %>%">
+					</div>
+				</div> 
+				<br/>
+			<% end %> 
+		</div>
+		<div>
+		</br/>
+			<h4><%= link_to "Monitor new child!",  new_child_guardian_relationship_path(:watcher_id => @user.id) %></h4>
+		</div>
+	</div>
+
+	<div id="articles_area">
+		<h2 style="text-align:center;">Newest Articles! </h2>
+		<br/>
+		<table>
+			<tr>
+			    <th class="watcher_name_col">Name</th>
+			    <th>Topic</th>
+			    <th>Creator</th>
+			  </tr>
+
+			<% @articles.each do |article| %>
+			  <tr>
+			    <td class="watcher_name_col"><%= link_to article.name, article.article_source%></td>
+			    <td><%= article.topic %></td>
+			    <td><%=
+			    	if article.watcher != nil 
+			              article.watcher.name
+			        else
+			        	"not found"
+			        end%>
+			    </td>
+			  </tr>
+			<% end %>
+			</table>
+		<br/>
+		<h4><%= link_to "See more articles...", articles_path %> </h4>
+		<h4><%= link_to "Upload a new Article!", new_article_path(:watcher_id => @user.id) %></h4>
+	</div>
 
 <br/>
