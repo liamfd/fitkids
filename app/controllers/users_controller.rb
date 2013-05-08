@@ -95,7 +95,7 @@ class UsersController < ApplicationController
     #@user = User.find(params[:user_id])
     @user = current_user
     #@children_watched = @user.child_guardian_relationships
-    @articles = Article.all
+    @articles = Article.find(:all, :order=> "id desc", :limit=>5)
     @children_relations = @user.child_guardian_relationships.all
     @children = @user.children.all
     #@full_diet_plan = 15

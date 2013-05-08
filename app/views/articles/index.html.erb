@@ -1,16 +1,17 @@
 <h2>Listing articles</h2>
+<br/>
 
 <table>
   <tr>
     <th class="name_col">Name</th>
     <th>Topic</th>
     <th>Content</th>
-    <th>Creator Name </th>
+    <th>Creator</th>
   </tr>
 
 <% @articles.each do |article| %>
-  <tr>
-    <td class="name_col"><div><%= article.name %></div></td>
+  <tr> 
+    <td class="name_col"><%= link_to article.name, article.article_source%></td>
     <td><%= article.topic %></td>
     <td><div><%= article.content %></td>
     <td><%= if article.watcher != nil 

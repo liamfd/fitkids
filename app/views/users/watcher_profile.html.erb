@@ -2,42 +2,54 @@
 	<h4> This is the profile for <%=@user.name%></h4>
 	<br/>
 	<div id = "monitor_area">
-		<h3 style="text-align:center;"> Children! </h3>
+		<h2 style="text-align:center;"> Children! </h2>
+		<br/>
 		<div>
 			<% @children.each do |child| %>
 			    <% @curr_diet = child.daily_diets.order('created_at DESC').first %>
-				<% @curr_progress = child.points.to_f/15 * 100 %>
-				<% @curr_progress = child.points.to_f/15 * 100 %>
-				<% @curr_diet_progress = @curr_diet.carbs_eaten.to_f/@curr_diet.diet_plan.carbs_serv * 100 %>
-			    <h4><%= child.name %>, level <%= child.points %></h4>
-			    Overall:
+			    <% @level_up = 20 %>
+				<% @curr_progress = child.points.to_f/@level_up * 100 %>
+				<% @curr_diet_progress = @curr_diet.daily_progress.to_f/@curr_diet.diet_plan.get_total * 100 %>
+				<% @curr_exercise_progress = child.exercise_done.to_f/child.exercise_goal * 100 %>
+			    <h3 class="child_name"><%= child.name %>, level <%= child.points %></h3>
+			    Overall: <%=child.points %> / <%= @level_up%> points.
 			    <div class="minorProgBar">
 					<div class="innerBar" style="width:<%= @curr_progress %>%">
 					</div>
 				</div> 
+				Diet: <%=@curr_diet.daily_progress%> / <%= @curr_diet.diet_plan.get_total%> daily balanced servings.
+				<div class="miniProgBar">
+					<div class="innerBar" style="width:<%= @curr_diet_progress %>%">
+					</div>
+				</div> 
+				Exercise: <%=child.exercise_done %> / <%= child.exercise_goal%> minutes of exercise.
+				<div class="miniProgBar">
+					<div class="innerBar" style="width:<%= @curr_exercise_progress %>%">
+					</div>
+				</div> 
+				<br/>
 			<% end %> 
 		</div>
 		<div>
-			<%= link_to "Monitor new child!",  new_child_guardian_relationship_path(:watcher_id => @user.id) %>
+		</br/>
+			<h4><%= link_to "Monitor new child!",  new_child_guardian_relationship_path(:watcher_id => @user.id) %></h4>
 		</div>
 	</div>
 
 	<div id="articles_area">
-		<h3 style="text-align:center;"> Articles! </h3>
+		<h2 style="text-align:center;">Newest Articles! </h2>
 		<br/>
 		<table>
 			<tr>
 			    <th class="watcher_name_col">Name</th>
 			    <th>Topic</th>
-			    <th>Content</th>
 			    <th>Creator</th>
 			  </tr>
 
 			<% @articles.each do |article| %>
 			  <tr>
-			    <td class="watcher_name_col"><%= article.name %></td>
+			    <td class="watcher_name_col"><%= link_to article.name, article.article_source%></td>
 			    <td><%= article.topic %></td>
-			    <td><%= article.content %></td>
 			    <td><%=
 			    	if article.watcher != nil 
 			              article.watcher.name
@@ -48,7 +60,9 @@
 			  </tr>
 			<% end %>
 			</table>
-		<%= link_to "Create a new Article!", new_article_path(:watcher_id => @user.id) %>
+		<br/>
+		<h4><%= link_to "See more articles...", articles_path %> </h4>
+		<h4><%= link_to "Upload a new Article!", new_article_path(:watcher_id => @user.id) %></h4>
 	</div>
 
 <br/>

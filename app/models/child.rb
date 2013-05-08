@@ -23,7 +23,7 @@ class Child < User
   after_find :daily_reset, :make_avatar
 
   def make_daily_diet
-    curr_diet = self.daily_diets.build({"diet_plan" => DietPlan.find(2)})
+    curr_diet = self.daily_diets.build({"diet_plan" => DietPlan.find_by_diet_name("NewDiet")})
     curr_diet.day_made = Date.current
     curr_diet.save
     self.exercise_goal=60
@@ -39,7 +39,7 @@ class Child < User
     #self.save
     curr_diet = self.daily_diets.order('created_at DESC').first
     if curr_diet.day_made != Date.current
-      curr_diet = self.daily_diets.build({"diet_plan" => DietPlan.find(2)})
+      curr_diet = self.daily_diets.build({"diet_plan" => DietPlan.find_by_diet_name("NewDiet")})
       curr_diet.day_made = Date.current
       curr_diet.save
       #since you get a new diet every day, it stands to reason that if you must reset this it's a new day
