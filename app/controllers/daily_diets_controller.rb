@@ -25,6 +25,7 @@ class DailyDietsController < ApplicationController
   # GET /daily_diets/new.json
   def new
     @daily_diet = DailyDiet.new
+    @daily_diet.day_made = Date.current
 
     respond_to do |format|
       format.html # new.html.erb

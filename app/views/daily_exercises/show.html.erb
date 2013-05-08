@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Minutes exercised:</b>
+  <%= @daily_exercise.minutes_exercised %>
+</p>
+
+<p>
+  <b>Day made:</b>
+  <%= @daily_exercise.day_made %>
+</p>
+
+
+<%= link_to 'Edit', edit_daily_exercise_path(@daily_exercise) %> |
+<%= link_to 'Back', daily_exercises_path %>

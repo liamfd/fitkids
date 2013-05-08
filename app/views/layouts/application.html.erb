@@ -14,7 +14,7 @@
 			<h1><%= link_to "Fitkids", "/"%></h1>
 			<nav>
 				<%= render "layouts/choose_profile" %>
-				<%=  link_to "Leaderboards", index_children_leaderboards_path %> 
+				<%=  link_to "Leaderboards", index_children_leaderboards_path%> 
 				<%= link_to "About", "/"%>
 				<%= link_to "Contact", "/"%>
 			</nav>
@@ -24,23 +24,11 @@
 		<div id="hmenu">
 		<% if user_signed_in? %>
 			<div>
-			You're signed in!
-			Current user type is <%= current_user.type %>
+			You're signed as a <%= current_user.type %>.
 			<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-			</div>
-		<% elsif watcher_signed_in? %>
-			You're a watcher!
-			<div>
-			<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-			</div>
-		<% elsif user_signed_in? %>
-			<div>
-			You signed in weird.
-			<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>    
 			</div>
 		<% else %>
 			<div>
-			poo.
 			<%= link_to('Login', new_user_session_path)  %>   
 			</div>
 		<% end %>

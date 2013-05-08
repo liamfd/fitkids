@@ -1,0 +1,1 @@
+rails generate scaffold ExercisePlans goal:integer ex_title:string

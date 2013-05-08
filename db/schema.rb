@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130507154346) do
+ActiveRecord::Schema.define(:version => 20130508145036) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -39,15 +39,14 @@ ActiveRecord::Schema.define(:version => 20130507154346) do
     t.datetime "updated_at",                    :null => false
     t.integer  "watcher"
     t.string   "article_source", :limit => nil
+    t.integer  "watcher_id"
   end
 
   create_table "avatars", :force => true do |t|
-    t.integer  "color"
-    t.string   "name"
-    t.text     "description"
+    t.string   "image_name", :default => "avatar1.jpg"
     t.integer  "child_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
   end
 
   add_index "avatars", ["child_id"], :name => "index_avatars_on_child_id"
@@ -114,6 +113,15 @@ ActiveRecord::Schema.define(:version => 20130507154346) do
   add_index "daily_diets", ["child_id"], :name => "index_daily_diets_on_child_id"
   add_index "daily_diets", ["diet_plan_id"], :name => "index_daily_diets_on_diet_plan_id"
 
+  create_table "daily_exercises", :force => true do |t|
+    t.integer  "minutes_exercised"
+    t.date     "day_made"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "child_id"
+    t.integer  "diet_plan_id"
+  end
+
   create_table "daily_regimen", :force => true do |t|
     t.string   "focus"
     t.integer  "child_id"
@@ -133,6 +141,14 @@ ActiveRecord::Schema.define(:version => 20130507154346) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "diet_name"
+  end
+
+  create_table "exercise_plans", :force => true do |t|
+    t.integer  "minutes_goal"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.string   "ex_title"
+    t.integer  "goal",         :default => 0
   end
 
   create_table "exercise_reps", :force => true do |t|
@@ -222,15 +238,15 @@ ActiveRecord::Schema.define(:version => 20130507154346) do
     t.integer  "height"
     t.integer  "weight"
     t.integer  "points",                 :default => 0
-    t.integer  "level",                  :default => 0
+    t.integer  "level",                  :default => 1
     t.integer  "exercise_score",         :default => 0
     t.integer  "diet_score",             :default => 0
     t.text     "bio"
     t.string   "type"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -239,6 +255,13 @@ ActiveRecord::Schema.define(:version => 20130507154346) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "daily_diet_id"
+    t.integer  "avatar_id"
+    t.integer  "daily_exercise"
+    t.integer  "exercise_done",          :default => 0
+    t.integer  "exercise_goal",          :default => 0
+    t.boolean  "exercise_bonus",         :default => false
+    t.integer  "food_score",             :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

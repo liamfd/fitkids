@@ -1,104 +1,98 @@
-<h2>Child Profile!</h2>
 <h2>Welcome, <%=current_user.name %></h2>
-<h3>You are level <%=current_user.level %> </h3>
 
-<%= image_tag('avatarEx.png', size:"300x200") %>
+<%= image_tag(@user.avatar.image_name, size:"300x225") %>
 <br/>
 <br/>
- 
+
 <h3> Main progress </h3>
 <div class="majorProgBar">
 		<div class="innerBar" style="width:<%= @curr_progress %>%"></div>
 </div> 
-	<p>Points = <%= @user.points %> </p>
+	<h4>Points = <%= @user.points %> </h4>
  <br/>
+
+<h3>You are level <%=current_user.level %> </h3> 
  
 <div id="diet_spot">
 	<h3>Diet!</h3>
-	<h4>Diet Progress:</h4>
-	<div class="minorProgBar">
+	<h4>Daily Diet Progress: <%= @curr_diet.daily_progress%> / <%= @fake_diet_plan%></h4>
+	<div class="mediumProgBar">
 		<div class="innerBar" style="width:<%= @curr_diet_progress %>%"></div>
 	</div>
-	<p><%= @curr_diet.daily_progress%> / <%= @fake_diet_plan%> </p>
 	<br/>
 		 
-	 <h4>Water:</h4>
-	<div class="minorProgBar">
-		<div class="innerBar" style="width:<%= @curr_water %>%"></div>
+	<div style="clear:both">
+		<h4>Water: <%= @curr_diet.water_drank %> / <%= @curr_diet.diet_plan.water_serv%></h4>
+		<div class="minorProgBar" style="float:left;">
+			<div class="innerBar" style="width:<%= @curr_water %>%"></div>
+		</div>
+		<%= button_to "+", :action => 'increment_water', :id=>current_user %>
 	</div>
-	<p><%= @curr_diet.water_drank %> / <%= @curr_diet.diet_plan.water_serv%> </p>
-	<%= button_to "+Water", :action => 'increment_water', :id=>current_user %>
-	<br/>
 	
-	 <h4>Veggies:</h4>
-	<div class="minorProgBar">
-		<div class="innerBar" style="width:<%= @curr_veggies %>%"></div>
+	<div style="clear:both">
+		<h4>Veggies: <%= @curr_diet.veggie_eaten %> / <%= @curr_diet.diet_plan.veggie_serv%></h4>
+		<div class="minorProgBar" style="float:left;">
+			<div class="innerBar" style="width:<%= @curr_veggies%>%"></div>
+		</div>
+		<%= button_to "+", :action => 'increment_veggies', :id=>current_user %>
 	</div>
-	<p><%= @curr_diet.veggie_eaten %> / <%= @curr_diet.diet_plan.veggie_serv%> </p>
-	<%= button_to "+Veggies", :action => 'increment_veggies', :id=>current_user %>
-	<br/>
-	 
-	 <h4>Carbs:</h4>
-	<div class="minorProgBar">
-		<div class="innerBar" style="width:<%= @curr_carbs %>%"></div>
-	</div>
-	<p><%= @curr_diet.carbs_eaten %> / <%= @curr_diet.diet_plan.carbs_serv%> </p>
-	<%= button_to "+Carbs", :action => 'increment_carbs', :id=>current_user %>
-	<br/>
-	 
-	<h4>Protein:</h4>
-	<div class="minorProgBar">
-		<div class="innerBar" style="width:<%= @curr_prot %>%"></div>
-	</div>
-	<p><%= @curr_diet.prot_eaten %> / <%= @curr_diet.diet_plan.prot_serv%> </p>
-	<%= button_to "+Protein", :action => 'increment_prot', :id=>current_user %>
-	<br/>
-	 
-	<h4>Fruits:</h4>
-	<div class="minorProgBar">
-		<div class="innerBar" style="width:<%= @curr_fruit %>%"></div>
-	</div>
-	<%= button_to "+Fruits", :action => 'increment_fruit', :id=>current_user %>
-	<p><%= @curr_diet.fruit_eaten %> / <%= @curr_diet.diet_plan.fruit_serv%> </p>
-	 
-	<br/>
-	 <h4>Sweets:</h4>
-	<div class="minorProgBar">
-		<div class="innerBar" style="width:<%= @curr_sweets %>%"></div>
-	</div>
-	<p><%= @curr_diet.sweets_eaten %> / <%= @curr_diet.diet_plan.sweets_serv%> </p>
-	<%= button_to "+Sweets", :action => 'increment_sweets', :id=>current_user %>
 
+	<div style="clear:both">
+		<h4>Carbs: <%= @curr_diet.carbs_eaten %> / <%= @curr_diet.diet_plan.carbs_serv%> </h4>
+		<div class="minorProgBar" style="float:left;">
+			<div class="innerBar" style="width:<%= @curr_carbs%>%"></div>
+		</div>
+		<%= button_to "+", :action => 'increment_carbs', :id=>current_user %>
+	</div>
+
+	<div style="clear:both">
+		<h4>Protein: <%= @curr_diet.prot_eaten %> / <%= @curr_diet.diet_plan.prot_serv%></h4>
+		<div class="minorProgBar" style="float:left;">
+			<div class="innerBar" style="width:<%= @curr_prot%>%"></div>
+		</div>
+		<%= button_to "+", :action => 'increment_prot', :id=>current_user %>
+	</div>
+	 
+	<div style="clear:both">
+		<h4>Fruits: <%= @curr_diet.fruit_eaten %> / <%= @curr_diet.diet_plan.fruit_serv%> </h4>
+		<div class="minorProgBar" style="float:left;">
+			<div class="innerBar" style="width:<%= @curr_fruit%>%"></div>
+		</div>
+		<%= button_to "+", :action => 'increment_fruit', :id=>current_user %>
+	</div>
+
+	<div style="clear:both">
+		<h4>Sweets: <%= @curr_diet.sweets_eaten %> / <%= @curr_diet.diet_plan.sweets_serv%> </h4>
+		<div class="minorProgBar" style="float:left;">
+			<div class="innerBar" style="width:<%= @curr_sweets%>%"></div>
+		</div>
+		<%= button_to "+", :action => 'increment_sweets', :id=>current_user %>
+	</div>
+
+	<br/>
+	<!--<div style="clear:both">
 	<h3> Make a new diet! </h3>
-	<%= button_to "newDiet", :action => 'get_daily_diet', :id=>current_user %>
-
-	
+		<%# button_to "newDiet", :action => 'get_daily_diet', :id=>current_user %>
+	</div>-->
 	 
 </div>
 
 <div id="exercise_spot">
-	<h3>Excersize!</h3>
-	<br/>
-	
-	 <h4>Upper </h4>
-	<div class="minorProgBar">
-			<div class="innerBar"></div>
+	<h3>Exercise!</h3>
+	<h4>Exercise Progress: <%= @user.exercise_done%> / <%= @user.exercise_goal%></h4>
+	<div class="mediumProgBar">
+			<div class="innerBar" style="width:<%= @curr_exercise_progress%>%"></div>
 	</div>
-	 
-	 <h4>Lower</h4>
-	<div class="minorProgBar">
-			<div class="innerBar"></div>
+	<div>
+		<h4>How many minutes did you play outside today?</h4>
+	    	<%= form_tag(:controller=>'users', :action=>'increment_exercise', :method=>"post") do %>
+		  		<%= number_field_tag :hours_exercised %>
+
+		  		<%= submit_tag 'Update Exercise' %>
+			<% end %>
 	</div>
-	 
-	 <h4>Endurance</h4>
-	<div class="minorProgBar">
-			<div class="innerBar"></div>
-	</div>
-	 
-	 <h4>Aerobic</h4>
-	<div class="minorProgBar">
-			<div class="innerBar"></div>
-	</div>
+</div>
+</div>
 	 
 </div>
 	 

@@ -1,0 +1,25 @@
+<h1>Listing exercise_plans</h1>
+
+<table>
+  <tr>
+    <th>Goal</th>
+    <th>Ex title</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @exercise_plans.each do |exercise_plan| %>
+  <tr>
+    <td><%= exercise_plan.goal %></td>
+    <td><%= exercise_plan.ex_title %></td>
+    <td><%= link_to 'Show', exercise_plan %></td>
+    <td><%= link_to 'Edit', edit_exercise_plan_path(exercise_plan) %></td>
+    <td><%= link_to 'Destroy', exercise_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Exercise plan', new_exercise_plan_path %>

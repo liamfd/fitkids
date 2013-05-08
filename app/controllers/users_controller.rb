@@ -6,6 +6,9 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
+    @users.find(:type => "Child") do |user|
+      user.calc_food_score(0)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,6 +47,10 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
+    if @user.type == "Child"
+     # @user.daily_diet_maker
+    	@user.avatar = avatar.new
+    end
 
     respond_to do |format|
       if @user.save
@@ -88,7 +95,10 @@ class UsersController < ApplicationController
     #@user = User.find(params[:user_id])
     @user = current_user
     #@children_watched = @user.child_guardian_relationships
-    @all_articles = @user.articles
+    @articles = Article.all
+    @children_relations = @user.child_guardian_relationships.all
+    @children = @user.children.all
+    #@fake_diet_plan = 15
 
     respond_to do |format|
       format.html # index.html.erb
@@ -103,7 +113,9 @@ class UsersController < ApplicationController
     @user = current_user
     #@user.daily_diet_maker
     @fake_diet_plan = 15
-
+		#if !@user.daily_diets.all
+		#	@user.daily_diet = daily_diets.create({"diet_plan" => DietPlan.find(2)})
+		#end
     @curr_diet = @user.daily_diets.order('created_at DESC').first
     @curr_water = @curr_diet.water_drank.to_f/@curr_diet.diet_plan.water_serv.to_f*100
     @curr_veggies = @curr_diet.veggie_eaten.to_f/@curr_diet.diet_plan.veggie_serv.to_f*100
@@ -112,6 +124,7 @@ class UsersController < ApplicationController
     @curr_fruit = @curr_diet.fruit_eaten.to_f/@curr_diet.diet_plan.fruit_serv.to_f*100
     @curr_sweets = @curr_diet.sweets_eaten.to_f/@curr_diet.diet_plan.sweets_serv.to_f*100
     @curr_diet_progress = @curr_diet.daily_progress.to_f/@fake_diet_plan * 100
+    @curr_exercise_progress = @user.exercise_done.to_f/@user.exercise_goal * 100
     #make a method to add up attributes in diet_plan
 
     @curr_progress = @user.calc_food_score("null")
@@ -122,13 +135,6 @@ class UsersController < ApplicationController
   end
 
     def get_daily_diet
-  #  @user = User.find(params[:id])
-  #  if @user.daily_diet_maker
-  #    @made_new = true
-  #  else
-  #    @made_new = false
-  #  end
-
     @user = User.find(params[:id])
     @user.daily_diet_maker
     @curr_diet = @user.daily_diets.order('created_at DESC').first
@@ -143,6 +149,30 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def increment_exercise
+    @user = current_user
+
+    @user = current_user
+    if(params.has_key?(:hours_exercised))
+      @exercise_done = params[:hours_exercised]
+    else
+      @exercise_done = 0
+    end
+
+    @user.add_exercise_score(@exercise_done)
+
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to action: "child_profile", notice: 'Exercise successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
 
   def increment_water

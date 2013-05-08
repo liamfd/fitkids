@@ -1,5 +1,5 @@
 class DailyDiet < ActiveRecord::Base
-	attr_accessible :daily_progress, :got_bonus, :carbs_eaten, :fruit_eaten, :personal_score, :prot_eaten, :sweets_eaten, :veggie_eaten, :water_drank, :diet_plan, :child
+	attr_accessible :day_made, :daily_progress, :got_bonus, :carbs_eaten, :fruit_eaten, :personal_score, :prot_eaten, :sweets_eaten, :veggie_eaten, :water_drank, :diet_plan, :child
 	belongs_to :child, inverse_of: :daily_diets
 	belongs_to :diet_plan, inverse_of: :daily_diets
 
@@ -10,7 +10,7 @@ class DailyDiet < ActiveRecord::Base
   	#end
 
   	def before_create
-    	self.day_made ||= Date.today if new_record?
+    	self.day_made ||= Date.current if new_record?
     	self.got_bonus = false
   	end
 

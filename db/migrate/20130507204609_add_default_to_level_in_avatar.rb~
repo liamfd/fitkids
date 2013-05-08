@@ -1,0 +1,5 @@
+class AddDefaultToLevelInAvatar < ActiveRecord::Migration
+  def change
+  	change_column :avatars, :level, :integer, :default => 0
+  end
+end

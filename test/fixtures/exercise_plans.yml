@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  goal: 1
+  ex_title: MyString
+
+two:
+  goal: 1
+  ex_title: MyString

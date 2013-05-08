@@ -10,6 +10,7 @@
     <th>Water drank</th>
     <th>Sweets eaten</th>
     <th>Child</th>
+    <th>Day Made</th>
     <th>Diet plan</th>
     <th></th>
     <th></th>
@@ -25,7 +26,13 @@
     <td><%= daily_diet.fruit_eaten %></td>
     <td><%= daily_diet.water_drank %></td>
     <td><%= daily_diet.sweets_eaten %></td>
-    <td><%= daily_diet.child.level %></td>
+    <td><% if daily_diet.child != nil %>
+              <%=daily_diet.child.name %>
+            <% else %>
+              "not found"
+            <%end%>
+        </td>
+    <td><%= daily_diet.day_made %></td>
     <td><%= daily_diet.diet_plan %></td>
     <td><%= link_to 'Show', daily_diet %></td>
     <td><%= link_to 'Edit', edit_daily_diet_path(daily_diet) %></td>

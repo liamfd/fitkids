@@ -9,11 +9,11 @@ class Watcher < User
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
-  has_many :child_guardian_relationships, inverse_of: :watcher
-    accepts_nested_attributes_for :child_guardian_relationships, :allow_destroy => true
-
+  has_many :child_guardian_relationships, inverse_of: :watcher, :dependent => :destroy
+  #  accepts_nested_attributes_for :child_guardian_relationships, :allow_destroy => true
+  has_many :children, :through => :child_guardian_relationships
   has_many :articles, inverse_of: :watcher
-    accepts_nested_attributes_for :articles, :allow_destroy => false
+  #  accepts_nested_attributes_for :articles, :allow_destroy => false
 
   def self.model_name
     User.model_name

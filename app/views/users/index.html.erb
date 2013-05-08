@@ -13,6 +13,7 @@
     <th>Diet score</th>
     <th>Bio</th>
     <th>Type</th>
+    <th>Diet Plan</th>
     <th></th>
     <th></th>
     <th></th>
@@ -31,6 +32,14 @@
     <td><%= user.diet_score %></td>
     <td><%= user.bio %></td>
     <td><%= user.type %></td>
+    <td><% if user.type == "Child" %>
+                <% if user.daily_diets.any? %>
+                    <%=user.daily_diets.order('created_at DESC').first.carbs_eaten%>
+                <% else %>
+                    "not found"
+                <% end %>
+           <% end%>
+        </td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

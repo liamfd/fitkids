@@ -16,7 +16,7 @@ class LeaderboardsController < ApplicationController
 
   def index_children
     #@users = User.where(:type => "Child").order(:level)
-    @users = User.order(sort_column + " " + sort_direction)
+    @users = User.where(:type => "Child").order(sort_column + " " + sort_direction)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @leaderboards }

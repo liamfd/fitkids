@@ -1,5 +1,14 @@
 Fitkids::Application.routes.draw do
 
+  resources :exercise_plans
+
+
+  resources :daily_exercises
+
+
+  resources :avatars
+
+
   devise_for :watchers
 
   devise_for :children, :controllers => { :sessions => "children/sessions" }
@@ -22,25 +31,10 @@ Fitkids::Application.routes.draw do
   end
 
 
-  resources :daily_regimen
-
-
-  resources :featurings
-
-
-  resources :features
-
-
   resources :exercise_reps
 
 
   resources :articles
-
-
-  resources :avatars
-
-
-  resources :exercises
 
 
   resources :diet_plans
@@ -56,6 +50,7 @@ Fitkids::Application.routes.draw do
   end
 
 
+  post '/users/increment_exercise'
   post '/users/increment_carbs'
   post '/users/increment_fruit'
   post '/users/increment_prot'
