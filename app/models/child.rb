@@ -6,7 +6,7 @@ class Child < User
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :leaderboard, :exercise_done, :exercise_goal, :daily_diet_id, :avatar_id, :exercise_bonus, :food_score
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :leaderboard, :exercise_done, :exercise_goal, :daily_diet_id, :avatar_id, :exercise_bonus, :food_score, :level_threhold
 	has_one :avatar, inverse_of: :child
   has_many :daily_diets, inverse_of: :child
   has_many :daily_exercises, inverse_of: :child
@@ -92,16 +92,15 @@ class Child < User
   def calc_food_score(food_type)
     @curr_diet = self.daily_diets.order('created_at DESC').first
 
-    @level_up_threshold = 20
+    self.level_threshold = 20
     @food_score = @curr_diet.calc_servings(food_type)
     self.food_score = @curr_diet.daily_progress
     self.points += @food_score
-    level_up(@level_up_threshold)
-    return 100*self.points.to_f/@level_up_threshold.to_f
+    level_up()
+    return 100*self.points.to_f/self.level_threshold.to_f
   end
 
   def add_exercise_score(amount)
-    @level_up_threshold = 20
     @prev_exercise_done = self.exercise_done
 
     self.exercise_done += amount.to_i
@@ -120,14 +119,14 @@ class Child < User
       self.exercise_bonus = true
     end
 
-    level_up(@level_up_threshold)
+    level_up()
     self.save
   end
 
-  def level_up(level_up_threshold)
-    if self.points >= @level_up_threshold
+  def level_up()
+    if self.points >= self.level_threshold
       self.level += 1
-      self.points -= @level_up_threshold
+      self.points -= self.level_threshold
       self.avatar.set_image_name(self.level)
     end
   end

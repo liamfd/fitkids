@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130508174157) do
+ActiveRecord::Schema.define(:version => 20130508205248) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -262,6 +262,7 @@ ActiveRecord::Schema.define(:version => 20130508174157) do
     t.integer  "exercise_goal",          :default => 0
     t.boolean  "exercise_bonus",         :default => false
     t.integer  "food_score",             :default => 0
+    t.integer  "level_threshold",        :default => 20
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -1,11 +1,5 @@
 Fitkids::Application.routes.draw do
 
-  resources :exercise_plans
-
-
-  resources :daily_exercises
-
-
   resources :avatars
 
 
@@ -24,6 +18,7 @@ Fitkids::Application.routes.draw do
   resources :users do
     get :child_profile, on: :collection
     get :watcher_profile, on: :collection
+    get :sanitized_child_profile, on: :collection
     #resources :child_guardian_relationships
     resources :daily_diets do
       resources :diet_plans
@@ -58,7 +53,7 @@ Fitkids::Application.routes.draw do
   post '/users/increment_veggies'
   post '/users/increment_water'
   post '/users/get_daily_diet'
-
+  #post '/users/sanitized_child_profile'
 
 
 

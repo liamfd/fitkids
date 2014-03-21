@@ -50,7 +50,7 @@ table {
 /*Vars*/
 $contentWidth:960px;
 
-$headerHeight:80px;
+$headerHeight:35px;
 $headerBackground:#17A924;
 
 $navHeight:30px;
@@ -65,8 +65,54 @@ p, a, span, div{
 	font-family: 'Oswald', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6{
+h1, h2, h3, h4, h5, h6, th{
 	font-family: 'Lobster', cursive;
+}
+
+/* HOME */
+
+div #home_image
+{
+	width:940px;
+	height:400px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:30px;
+	background-image: url('homeSplash.jpg'); 
+	}
+
+$overlay_height:0px;
+div #home_overlay
+{
+	width:600px;
+	height:$overlay_height;
+
+	position:relative;
+	top:50%;
+	left:50%;
+	margin-top:overlay_height/-2px;
+	margin-left:-300px;
+	border-radius:8px;
+
+	background-color:rgba(0,0,0,.5);
+	h1{
+		font-size:65px;
+		color:$headerBackground;
+		text-align:center;
+		opacity:1;
+	}
+	h2{
+		font-family: 'Lobster', cursive;
+		color:#dddddd;
+		text-align:center;
+		font-size:35px;
+		margin-top:-10px;
+		a {
+			font-family:inherit;
+			color:#cC4CaB;
+			text-decoration:none;
+		}
+	}
 }
 
 #headerWrapper{
@@ -89,7 +135,7 @@ header{
 	h1 {
 		float:left;
 		color:#eeeeee;
-		font-size:75px;
+		font-size:38px;
 		text-transform:uppercase;
 		font-weight:bold;
 	}
@@ -157,13 +203,18 @@ nav{
 }
 
 h2{
-	color:#FFFFFF;
+	color:#bC3C9B;
 	font-size:36px;
 }
 
 h3{
 	color:#bC3C9B;
 	font-size:28px;
+}
+
+h3 .child_name{
+	color:#000000;
+	font-size:22px;
 }
 
 h4{
@@ -190,7 +241,7 @@ h4{
 	}
 }
 
-.minorProgBar{
+.mediumProgBar{
 	@include progBar;
 	height:26px;
 	width:400px;
@@ -200,15 +251,42 @@ h4{
 	}
 }
 
+.button_to{
+	margin-left:200px;
+	margin-top:9px;
+}
+
+.minorProgBar{
+	@include progBar;
+	height:20px;
+	width:300px;
+	.innerBar{
+		margin-left:-150px;
+		margin-top:-10px;
+	}
+}
+
+.miniProgBar{
+	@include progBar;
+	height:16px;
+	width:250px;
+	margin-left:16px;
+	.innerBar{
+		margin-left:-125px;
+		margin-top:-8px;
+	}
+}
+
 .innerBar{
 	position:absolute;
 	background-color:#449944;
-	width:50%;
+	width:0%;
 	height:100%;
 	left:50%;
 	top:50%;
 	z-index:3;
 }
+
 @mixin spots{
 	float:left;
 	overflow:hidden;
@@ -220,10 +298,108 @@ h4{
 
 #diet_spot{
 	@include spots;
+	clear:both;
 }
 
 #exercise_spot{
 	@include spots;
+	margin-left:50px;
+}
+
+th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+th .asc {
+  background-image: url(/images/up_arrow.gif);
+}
+
+th .desc {
+  background-image: url(/images/down_arrow.gif);
+}
+
+/* LEADERBOARDS */
+
+td{
+	text-align:center;
+	a{	
+		font-family:inherit;
+		font-size:inherit;
+		color:#8888ff;
+	}
+}
+
+h4{
+	a{
+		font-family:inherit;
+		color:#8888ff;
+	}
+}
+
+tr .list_line_even{
+	background-color:#e0f8f8;
+	border:3px #000000;
+}
+
+tr .list_line_odd{
+	background-color:#f8b0f8;
+}
+
+$tableCellWidth:100px;
+
+th {
+	height:22px;
+	width:$tableCellWidth;
+	font-size:20px;
+	color:#CD5C5C;
+	a{	
+		font-family:inherit;
+		font-size:24px;
+		color:inherit;
+	}
 }
 
 
+table td.articles {
+	height:20px;
+	width:$tableCellWidth;
+	border:1px solid #DDDDDD;
+	text-align:center;
+}
+
+table td.name_col, table td.name_col{
+	height:20px;
+	width:300px;
+	text-align:center;
+}
+
+div #main_wrapper{
+	padding-left:350px;
+}
+
+/* WATCHER PROFILE */
+@mixin watcher_areas{
+	float:left;
+	overflow:hidden;
+	padding:10px;
+	.minorProgBar{
+		margin:10px;
+	}	
+}
+
+#articles_area{
+	@include watcher_areas;
+	margin-left:150px;
+}
+
+#monitor_area{
+	@include watcher_areas;
+}
+
+table td.watcher_name_col, table td.watcher_name_col{
+	height:20px;
+	width:200px;
+	text-align:center;
+}

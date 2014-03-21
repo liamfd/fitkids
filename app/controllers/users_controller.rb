@@ -108,6 +108,28 @@ class UsersController < ApplicationController
 
   end
 
+  def sanitized_child_profile
+    @user = User.find(params[:id])
+    @curr_diet = @user.daily_diets.order('created_at DESC').first
+    @full_diet_plan = @curr_diet.diet_plan.get_total
+
+    @curr_water = @curr_diet.water_drank.to_f/@curr_diet.diet_plan.water_serv.to_f*100
+    @curr_veggies = @curr_diet.veggie_eaten.to_f/@curr_diet.diet_plan.veggie_serv.to_f*100
+    @curr_carbs = @curr_diet.carbs_eaten.to_f/@curr_diet.diet_plan.carbs_serv.to_f*100 
+    @curr_prot = @curr_diet.prot_eaten.to_f/@curr_diet.diet_plan.prot_serv.to_f*100
+    @curr_fruit = @curr_diet.fruit_eaten.to_f/@curr_diet.diet_plan.fruit_serv.to_f*100
+    @curr_sweets = @curr_diet.sweets_eaten.to_f/@curr_diet.diet_plan.sweets_serv.to_f*100
+    @curr_diet_progress = @curr_diet.daily_progress.to_f/@full_diet_plan * 100
+    @curr_exercise_progress = @user.exercise_done.to_f/@user.exercise_goal * 100
+    #make a method to add up attributes in diet_plan
+
+    @curr_progress = @user.calc_food_score("null")
+    respond_to do |format|
+      format.html # child_profile.html.erb
+      format.json { render json: @user }
+    end
+  end
+
   def child_profile
     #This will need to change in order to have others view someone's profile
     @user = current_user
@@ -281,6 +303,16 @@ class UsersController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  # GET /users/1/edit
+  def sanitized_edit
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @user }
     end
   end
   
