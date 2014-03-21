@@ -1,3 +1,0 @@
-rails generate scaffold Avatar color:int name:string description:text child:references
-rails generate scaffold Feature name:string appearance:string feature_type:string
-rails generate scaffold Featuring level:int avatar:references feature:references
